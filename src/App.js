@@ -18,10 +18,12 @@ export default class App extends Component {
         <header className='App-header'>
           <h1>AmILegal</h1>
         </header>
+        <LinearProgress
+          style={{ height: '30px' }}
+          variant='determinate'
+          value={this.state.progressValue}
+        />
         <Grid container direction='column' justify='center' alignItems='center'>
-          <Grid item xs={12}>
-            <LinearProgress variant='indeterminate' value={0} />
-          </Grid>
           <Grid item xs={12}>
             <Card raised className='questions-card' />
           </Grid>
