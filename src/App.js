@@ -6,8 +6,11 @@ import Grid from '@material-ui/core/Grid'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import MobileStepper from '@material-ui/core/MobileStepper'
 import CardContent from '@material-ui/core/CardContent'
+import IconButton from '@material-ui/core/IconButton'
+import Icon from '@material-ui/core/Icon'
+import ArrowBackIos from '@material-ui/icons/ArrowBackIos'
+import ArrowForwardIos from '@material-ui/icons/ArrowForwardIos'
 import TimePicker from './TimePicker'
-
 import './App.css'
 
 export default class App extends Component {
@@ -19,17 +22,74 @@ export default class App extends Component {
     minute: '00'
   }
 
+  componentDidMount() {}
   render() {
-    const stepperData = [
-      { question: 'When was your sign-in?', component: <Button>YES</Button> },
-      { question: 'Station code you signed in from?' },
-      { question: 'Is this an international trip?' },
-      { question: 'What kind of international trip is this?' },
-      { question: "You're illegal at:" }
-    ]
     const updateSignIn = event => {
       this.setState({ [event.target.name]: event.target.value })
     }
+    const stepperData = [
+      {
+        question: 'When was your sign-in?',
+        component: (
+          <div>
+            <TimePicker
+              updateSignIn={updateSignIn}
+              hour={this.state.hour}
+              minute={this.state.minute}
+            />
+            <Button variant='contained' color='primary'>
+              Next
+            </Button>
+          </div>
+        )
+      },
+      {
+        question: 'Station code you signed in from?',
+        component: (
+          <div>
+            <TimePicker
+              updateSignIn={updateSignIn}
+              hour={this.state.hour}
+              minute={this.state.minute}
+            />
+            <Button variant='contained' color='primary'>
+              Next
+            </Button>
+          </div>
+        )
+      },
+      {
+        question: 'Is this an international trip?',
+        component: (
+          <div>
+            <TimePicker
+              updateSignIn={updateSignIn}
+              hour={this.state.hour}
+              minute={this.state.minute}
+            />
+            <Button variant='contained' color='primary'>
+              Next
+            </Button>
+          </div>
+        )
+      },
+      {
+        question: 'What kind of international trip is this?',
+        component: (
+          <div>
+            <TimePicker
+              updateSignIn={updateSignIn}
+              hour={this.state.hour}
+              minute={this.state.minute}
+            />
+            <Button variant='contained' color='primary'>
+              Next
+            </Button>
+          </div>
+        )
+      },
+      { question: "You're illegal at:" }
+    ]
 
     return (
       <div className='App'>
@@ -47,12 +107,26 @@ export default class App extends Component {
             <Card raised className='questions-card'>
               <h1> {stepperData[this.state.activeStep].question}</h1>
               <CardContent>
-                <TimePicker
-                  updateSignIn={updateSignIn}
-                  hour={this.state.hour}
-                  minute={this.state.minute}
-                />
+                {stepperData[this.state.activeStep].component}
               </CardContent>
+              <div className='card-actions'>
+                <IconButton
+                  onClick={() => {
+                    console.log('step back')
+                  }}
+                  color='primary'
+                  aria-label='go back'>
+                  <ArrowBackIos />
+                </IconButton>
+                <IconButton
+                  onClick={() => {
+                    console.log('step forward')
+                  }}
+                  color='primary'
+                  aria-label='go back'>
+                  <ArrowForwardIos />
+                </IconButton>
+              </div>
             </Card>
           </Grid>
           <Grid item xs={12}>

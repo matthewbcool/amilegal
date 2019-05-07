@@ -10,9 +10,21 @@
 }
 
 .questions-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
   width: 365px;
   height: 400px;
   margin: 10px 0px 10px 0px;
+  padding: 0px 5px 5px 5px;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+  width: 365px;
 }
 
 .results-card {
