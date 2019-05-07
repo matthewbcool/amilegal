@@ -112,7 +112,10 @@ export default class App extends Component {
               <div className='card-actions'>
                 <IconButton
                   onClick={() => {
-                    console.log('step back')
+                    this.setState({ activeStep: this.state.activeStep - 1 })
+                    this.setState({
+                      progressValue: this.state.progressValue - 20
+                    })
                   }}
                   color='primary'
                   aria-label='go back'>
@@ -120,7 +123,10 @@ export default class App extends Component {
                 </IconButton>
                 <IconButton
                   onClick={() => {
-                    console.log('step forward')
+                    this.setState({ activeStep: this.state.activeStep + 1 })
+                    this.setState({
+                      progressValue: this.state.progressValue + 20
+                    })
                   }}
                   color='primary'
                   aria-label='go back'>
