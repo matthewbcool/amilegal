@@ -6,7 +6,7 @@ import Grid from '@material-ui/core/Grid'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import MobileStepper from '@material-ui/core/MobileStepper'
 import CardContent from '@material-ui/core/CardContent'
-import Input from '@material-ui/core/Input'
+import TimePicker from './TimePicker'
 
 import './App.css'
 
@@ -14,7 +14,9 @@ export default class App extends Component {
   state = {
     progressValue: 0,
     activeStep: 0,
-    slectedTime: 1200
+    slectedTime: 1200,
+    hour: '00',
+    minute: '00'
   }
 
   render() {
@@ -25,10 +27,10 @@ export default class App extends Component {
       { question: 'What kind of international trip is this?' },
       { question: "You're illegal at:" }
     ]
-
-    const handleTimeChange = () => {
-      console.log('change the time')
+    const updateSignIn = event => {
+      this.setState({ [event.target.name]: event.target.value })
     }
+
     return (
       <div className='App'>
         <CssBaseline />
@@ -45,7 +47,11 @@ export default class App extends Component {
             <Card raised className='questions-card'>
               <h1> {stepperData[this.state.activeStep].question}</h1>
               <CardContent>
-                <Input defaultValue={1200} />
+                <TimePicker
+                  updateSignIn={updateSignIn}
+                  hour={this.state.hour}
+                  minute={this.state.minute}
+                />
               </CardContent>
             </Card>
           </Grid>
