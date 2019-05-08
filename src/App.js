@@ -42,8 +42,10 @@ export default class App extends Component {
     }
 
     const getSignIn = () => {
-      this.setState({ activeStep: this.state.activeStep + 1 })
+      stepForward()
       let signIn = parseInt(this.state.hour)
+
+      // use day.js to parse display times, then set state
 
       if (signIn > 4 && signIn < 17) {
         this.setState({ onDutyMax: 15 })
@@ -75,6 +77,11 @@ export default class App extends Component {
           tripTypeDescription: 'A duty period with above 14.15 sceduled flying'
         })
       }
+    }
+
+    const stepForward = () => {
+      this.setState({ activeStep: this.state.activeStep + 1 })
+      this.setState({ progressValue: this.state.progressValue + 20 })
     }
 
     const checkForProgressCompletion = () => {
@@ -288,7 +295,7 @@ export default class App extends Component {
           <h1>AmILegal</h1>
         </header>
         <LinearProgress
-          style={{ height: '30px' }}
+          style={{ height: '25px' }}
           variant='determinate'
           value={this.state.progressValue}
         />
@@ -327,7 +334,9 @@ export default class App extends Component {
             </Card>
           </Grid>
           <Grid item xs={12}>
-            <Card raised className='results-card' />
+            <Card raised className='results-card'>
+              <h5>Sign In: {this.state.displaySignIn}</h5>
+            </Card>
           </Grid>
         </Grid>
         <footer className='footer'>this is the footer</footer>{' '}
