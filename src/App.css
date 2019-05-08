@@ -52,6 +52,9 @@
 .hours-flying-wrapper,
 .minutes-flying-wrapper {
   display: flex;
+  align-items: baseline;
+  align-content: center;
+  margin: 20px 0px 0px 0px;
 }
 
 .int-type-wrapper {

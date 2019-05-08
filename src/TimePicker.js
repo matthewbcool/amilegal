@@ -21,7 +21,7 @@ class TimePicker extends React.Component {
             Hour
           </InputLabel>
           <Select
-            style={{ fontSize: '2rem', padding: '0px 5px 5px 0px' }}
+            style={{ fontSize: '2rem', padding: '0px 0px 5px 0px' }}
             value={this.props.hour}
             className='time-picker-select'
             onChange={this.props.handleChange}
@@ -56,7 +56,7 @@ class TimePicker extends React.Component {
             <MenuItem value={24}>00</MenuItem>
           </Select>
         </FormControl>
-        <h1>:</h1>
+        <h1 style={{ margin: '0px 10px 0px 0px' }}>:</h1>
         <FormControl>
           <InputLabel
             style={{ padding: '0px 0px 2px 0px', margin: '5px 0px 0px 0px' }}
@@ -64,7 +64,7 @@ class TimePicker extends React.Component {
             Min
           </InputLabel>
           <Select
-            style={{ fontSize: '2rem', padding: '0px 5px 5px 0px' }}
+            style={{ fontSize: '2rem', padding: '0px 0px 5px 0px' }}
             value={this.props.minute}
             className='time-picker-select'
             onChange={this.props.handleChange}

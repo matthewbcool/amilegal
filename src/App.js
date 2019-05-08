@@ -115,6 +115,7 @@ export default class App extends Component {
       } else {
         stepForward()
         clearErrorMsg()
+        setIntDutyDay()
       }
     }
     const calulateLegality = () => {
@@ -236,12 +237,16 @@ export default class App extends Component {
         )
       },
       {
-        question: 'What is the scheduled flying time of your flight?',
+        question: 'Scheduled flying time of your last leg?',
         component: (
           <div className='dynamic-component-wrapper'>
             <div className='flying-time-wrapper'>
               <div className='hours-flying-wrapper'>
                 <Select
+                  style={{
+                    width: '80px',
+                    fontSize: '2rem'
+                  }}
                   value={this.state.flyingHours}
                   onChange={handleChange}
                   inputProps={{
@@ -272,6 +277,10 @@ export default class App extends Component {
               </div>
               <div className='minutes-flying-wrapper'>
                 <Select
+                  style={{
+                    width: '80px',
+                    fontSize: '2rem'
+                  }}
                   value={this.state.flyingMinutes}
                   onChange={handleChange}
                   inputProps={{
@@ -279,8 +288,9 @@ export default class App extends Component {
                     id: 'flyingMinutes'
                   }}>
                   <MenuItem value=''>
-                    <em>Hours</em>
+                    <em>Minutes</em>
                   </MenuItem>
+                  <MenuItem value={0}>0</MenuItem>
                   <MenuItem value={1}>1</MenuItem>
                   <MenuItem value={2}>2</MenuItem>
                   <MenuItem value={3}>3</MenuItem>
@@ -341,7 +351,7 @@ export default class App extends Component {
                   <MenuItem value={58}>58</MenuItem>
                   <MenuItem value={59}>59</MenuItem>
                 </Select>
-                <h5>minutes</h5>
+                <h5>Minutes</h5>
               </div>
             </div>
             <h5>{this.state.errorMsg}</h5>
@@ -452,37 +462,29 @@ export default class App extends Component {
               </CardContent>
               <div className='card-actions'>
                 <IconButton
+                  style={{ margin: '0px 0px 10px 0px' }}
                   onClick={() => {
-                    this.setState({ activeStep: this.state.activeStep - 1 })
-                    this.setState({
-                      progressValue: this.state.progressValue - 20
-                    })
+                    if (this.state.activeStep === 0) {
+                    } else {
+                      this.setState({ activeStep: this.state.activeStep - 1 })
+                      this.setState({
+                        progressValue: this.state.progressValue - 20
+                      })
+                    }
                   }}
                   color='primary'
                   aria-label='go back'>
                   <ArrowBackIos />
-                </IconButton>
-                <IconButton
-                  onClick={() => {
-                    this.setState({ activeStep: this.state.activeStep + 1 })
-                    this.setState({
-                      progressValue: this.state.progressValue + 20
-                    })
-                    checkForProgressCompletion()
-                  }}
-                  color='primary'
-                  aria-label='go back'>
-                  <ArrowForwardIos />
                 </IconButton>
               </div>
             </Card>
           </Grid>
           <Grid item xs={12}>
             <Card raised className='results-card'>
-              <h5>Sign In: {this.state.displaySignIn}</h5>
-              <h5>Origin Station: {this.state.displayStation}</h5>
-              <h5>Next Flying Time: {this.state.displayFlyingTime}</h5>
-              <h5>International: {this.state.displayInt}</h5>
+              <p>Sign In: {this.state.displaySignIn}</p>
+              <p>Origin Station: {this.state.displayStation}</p>
+              <p>Next Flying Time: {this.state.displayFlyingTime}</p>
+              <p>International: {this.state.displayInt}</p>
             </Card>
           </Grid>
         </Grid>
