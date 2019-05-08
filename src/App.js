@@ -4,6 +4,7 @@ import Card from '@material-ui/core/Card'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Grid from '@material-ui/core/Grid'
 import LinearProgress from '@material-ui/core/LinearProgress'
+import Fade from '@material-ui/core/Fade'
 import CardContent from '@material-ui/core/CardContent'
 import IconButton from '@material-ui/core/IconButton'
 import ArrowBackIos from '@material-ui/icons/ArrowBackIos'
@@ -36,7 +37,8 @@ export default class App extends Component {
     displayInt: '',
     onDutyMax: 15,
     errorMsg: '',
-    internationalDebrief: false
+    internationalDebrief: false,
+    legalityTime: ''
   }
 
   render() {
@@ -113,10 +115,21 @@ export default class App extends Component {
       } else {
         stepForward()
         clearErrorMsg()
-        setIntDutyDay()
       }
     }
-
+    const calulateLegality = () => {
+      let signInObj = this.state.dayJsSignIn
+      let signInPlusDuty = signInObj.add(this.state.onDutyMax, 'hour')
+      if (this.state.internationalDebrief === true) {
+        signInPlusDuty = signInPlusDuty.subtract(30, 'minute')
+      } else {
+        signInPlusDuty = signInPlusDuty.subtract(15, 'minute')
+      }
+      signInPlusDuty = signInPlusDuty
+        .subtract(this.state.flyingHours, 'hour')
+        .subtract(this.state.flyingMinutes, 'minute')
+      this.setState({ legalityTime: signInPlusDuty.format('HHmm') })
+    }
     const setDutyMax = signIn => {
       if (signIn > 4 && signIn < 17) {
         this.setState({ onDutyMax: 15 })
@@ -135,6 +148,8 @@ export default class App extends Component {
         this.setState({ onDutyMax: 18 })
       } else if (this.state.intTripType === 'EXTEND_LONG_RANGE') {
         this.setState({ onDutyMax: 19 })
+      } else {
+        console.log('nothihng set')
       }
     }
 
@@ -400,7 +415,20 @@ export default class App extends Component {
           </div>
         )
       },
-      { question: 'Doors closed for departure at:' }
+      {
+        question: 'Doors closed for departure at: ',
+        component: (
+          <div className='dynamic-component-wrapper'>
+            <Button
+              onClick={calulateLegality}
+              variant='contained'
+              color='primary'>
+              Reveal Legality
+            </Button>
+            {this.state.legalityTime}
+          </div>
+        )
+      }
     ]
 
     return (
@@ -417,7 +445,8 @@ export default class App extends Component {
         <Grid container direction='column' justify='center' alignItems='center'>
           <Grid item xs={12}>
             <Card raised className='questions-card'>
-              <h1> {stepperData[this.state.activeStep].question}</h1>
+              <h1>{stepperData[this.state.activeStep].question}</h1>
+
               <CardContent>
                 {stepperData[this.state.activeStep].component}
               </CardContent>
