@@ -36,7 +36,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  border: 1px solid black;
+  border: 0.3px solid black;
   padding: 2px 2px 2px 2px;
   border-radius: 5px;
   box-shadow: #282c34 1px 2px 3px;
@@ -71,6 +71,8 @@
 .results-card {
   width: 365px;
   height: 100px;
+  display: flex;
+  align-items: baseline;
 }
 
 .footer {

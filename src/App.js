@@ -23,6 +23,7 @@ export default class App extends Component {
     slectedTime: 1200,
     hour: '',
     minute: '',
+    dayJsSignIn: {},
     stationOrigin: '',
     intTripType: '',
     tripTypeDescription: '',
@@ -30,7 +31,9 @@ export default class App extends Component {
     flyingMinutes: '',
     displaySignIn: '',
     displayStation: '',
+    displayFlyingTime: '',
     displayDoorClose: '',
+    displayInt: '',
     onDutyMax: 15,
     errorMsg: '',
     internationalDebrief: false
@@ -52,10 +55,19 @@ export default class App extends Component {
         stepForward()
         let signIn = parseInt(this.state.hour)
         setDutyMax(signIn)
+        setDisplaySignIn()
         clearErrorMsg()
       }
+    }
 
-      // use day.js to parse display times, then set state
+    const setDisplaySignIn = () => {
+      //also saves the dayJS object to state
+      let signInTime = dayjs()
+        .hour(this.state.hour)
+        .minute(this.state.minute)
+      this.setState({ dayJsSignIn: signInTime })
+      let displaySignIn = signInTime.format('HHmm')
+      this.setState({ displaySignIn: displaySignIn })
     }
 
     const getStationCode = () => {
@@ -63,6 +75,7 @@ export default class App extends Component {
         this.setState({ errorMsg: 'Please enter a three letter station code' })
       } else {
         stepForward()
+        this.setState({ displayStation: this.state.stationOrigin })
         clearErrorMsg()
       }
     }
@@ -71,6 +84,11 @@ export default class App extends Component {
         this.setState({ errorMsg: 'Please enter a valid flying time' })
       } else {
         stepForward()
+        this.setState({
+          displayFlyingTime: `${this.state.flyingHours} hours ${
+            this.state.flyingMinutes
+          } minutes`
+        })
         clearErrorMsg()
       }
     }
@@ -79,9 +97,11 @@ export default class App extends Component {
         this.setState({ activeStep: this.state.activeStep + 1 })
         this.setState({ progressValue: this.state.progressValue + 20 })
         this.setState({ internationalDebrief: true })
+        this.setState({ displayInt: 'Yes' })
       } else {
         this.setState({ activeStep: this.state.activeStep + 2 })
         this.setState({ progressValue: this.state.progressValue + 40 })
+        this.setState({ displayInt: 'No' })
       }
     }
     const getTripType = () => {
@@ -93,8 +113,10 @@ export default class App extends Component {
       } else {
         stepForward()
         clearErrorMsg()
+        setIntDutyDay()
       }
     }
+
     const setDutyMax = signIn => {
       if (signIn > 4 && signIn < 17) {
         this.setState({ onDutyMax: 15 })
@@ -102,6 +124,17 @@ export default class App extends Component {
         this.setState({ onDutyMax: 13 })
       } else if ((signIn => 23 && signIn < 26) || signIn < 5) {
         this.setState({ onDutyMax: 12 })
+      }
+    }
+    const setIntDutyDay = () => {
+      if (this.state.intTripType === 'NON_LONG_RANGE') {
+        this.setState({ onDutyMax: 16 })
+      } else if (this.state.intTripType === 'MID_RANGE') {
+        this.setState({ onDutyMax: 17 })
+      } else if (this.state.intTripType === 'LONG_RANGE') {
+        this.setState({ onDutyMax: 18 })
+      } else if (this.state.intTripType === 'EXTEND_LONG_RANGE') {
+        this.setState({ onDutyMax: 19 })
       }
     }
 
@@ -418,6 +451,9 @@ export default class App extends Component {
           <Grid item xs={12}>
             <Card raised className='results-card'>
               <h5>Sign In: {this.state.displaySignIn}</h5>
+              <h5>Origin Station: {this.state.displayStation}</h5>
+              <h5>Next Flying Time: {this.state.displayFlyingTime}</h5>
+              <h5>International: {this.state.displayInt}</h5>
             </Card>
           </Grid>
         </Grid>
