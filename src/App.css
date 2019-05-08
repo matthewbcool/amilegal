@@ -15,6 +15,7 @@
   justify-content: space-evenly;
   align-items: center;
   text-align: center;
+  transition: 1s;
   width: 365px;
   height: 400px;
   margin: 10px 0px 10px 0px;

@@ -17,7 +17,7 @@ class TimePicker extends React.Component {
             <InputLabel htmlFor='hour'>Hour</InputLabel>
             <Select
               value={this.props.hour}
-              onChange={this.props.updateSignIn}
+              onChange={this.props.handleChange}
               inputProps={{
                 name: 'hour',
                 id: 'hour'
@@ -53,7 +53,7 @@ class TimePicker extends React.Component {
             <InputLabel htmlFor='minute'>Minutes</InputLabel>
             <Select
               value={this.props.minute}
-              onChange={this.props.updateSignIn}
+              onChange={this.props.handleChange}
               inputProps={{
                 name: 'minute',
                 id: 'minute'

@@ -4,12 +4,13 @@ import Card from '@material-ui/core/Card'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Grid from '@material-ui/core/Grid'
 import LinearProgress from '@material-ui/core/LinearProgress'
-import MobileStepper from '@material-ui/core/MobileStepper'
 import CardContent from '@material-ui/core/CardContent'
 import IconButton from '@material-ui/core/IconButton'
-import Icon from '@material-ui/core/Icon'
 import ArrowBackIos from '@material-ui/icons/ArrowBackIos'
 import ArrowForwardIos from '@material-ui/icons/ArrowForwardIos'
+import TextField from '@material-ui/core/TextField'
+import Select from '@material-ui/core/Select'
+import MenuItem from '@material-ui/core/MenuItem'
 import TimePicker from './TimePicker'
 import './App.css'
 
@@ -19,13 +20,49 @@ export default class App extends Component {
     activeStep: 0,
     slectedTime: 1200,
     hour: '00',
-    minute: '00'
+    minute: '00',
+    stationOrigin: '',
+    intTripType: '',
+    tripTypeDescription: ''
   }
 
-  componentDidMount() {}
   render() {
-    const updateSignIn = event => {
+    const handleChange = event => {
       this.setState({ [event.target.name]: event.target.value })
+      if (event.target.name === 'intTripType') {
+        this.setState({ tripTypeDescription: '' })
+      }
+    }
+
+    const displayDescription = () => {
+      if (this.state.intTripType === 'NON_LONG_RANGE') {
+        this.setState({
+          tripTypeDescription:
+            'A duty period with any mix international or international and domestic segments'
+        })
+      } else if (this.state.intTripType === 'MID_RANGE') {
+        this.setState({
+          tripTypeDescription:
+            'A duty period including one domestic and one IPD, or a one day turn (2 NIPDs) or two NIPD segments'
+        })
+      } else if (this.state.intTripType === 'LONG_RANGE') {
+        this.setState({
+          tripTypeDescription:
+            'A flight leg over 12 hours but not more than 14.15'
+        })
+      } else if (this.state.intTripType === 'EXTEND_LONG_RANGE') {
+        this.setState({
+          tripTypeDescription: 'A duty period with above 14.15 sceduled flying'
+        })
+      }
+    }
+
+    const checkForProgressCompletion = () => {
+      if (this.state.activeStep === 3) {
+        this.setState({
+          progressValue: 100
+        })
+      }
     }
     const stepperData = [
       {
@@ -33,7 +70,7 @@ export default class App extends Component {
         component: (
           <div>
             <TimePicker
-              updateSignIn={updateSignIn}
+              handleChange={handleChange}
               hour={this.state.hour}
               minute={this.state.minute}
             />
@@ -47,10 +84,13 @@ export default class App extends Component {
         question: 'Station code you signed in from?',
         component: (
           <div>
-            <TimePicker
-              updateSignIn={updateSignIn}
-              hour={this.state.hour}
-              minute={this.state.minute}
+            <TextField
+              id='station-orgin'
+              name='stationOrigin'
+              label='Station Code'
+              value={this.state.stationOrigin}
+              onChange={handleChange}
+              margin='normal'
             />
             <Button variant='contained' color='primary'>
               Next
@@ -62,13 +102,11 @@ export default class App extends Component {
         question: 'Is this an international trip?',
         component: (
           <div>
-            <TimePicker
-              updateSignIn={updateSignIn}
-              hour={this.state.hour}
-              minute={this.state.minute}
-            />
             <Button variant='contained' color='primary'>
-              Next
+              Yes
+            </Button>
+            <Button variant='contained' color='secondary'>
+              No
             </Button>
           </div>
         )
@@ -77,14 +115,33 @@ export default class App extends Component {
         question: 'What kind of international trip is this?',
         component: (
           <div>
-            <TimePicker
-              updateSignIn={updateSignIn}
-              hour={this.state.hour}
-              minute={this.state.minute}
-            />
+            <Select
+              value={this.state.intTripType}
+              onChange={handleChange}
+              inputProps={{
+                name: 'intTripType',
+                id: 'int-trip-type'
+              }}>
+              <MenuItem value=''>
+                <em>Choose one for description</em>
+              </MenuItem>
+              <MenuItem value={'NON_LONG_RANGE'}>Non-Long Range</MenuItem>
+              <MenuItem value={'MID_RANGE'}>Mid-Range</MenuItem>
+              <MenuItem value={'LONG_RANGE'}>Long Range</MenuItem>
+              <MenuItem value={'EXTEND_LONG_RANGE'}>
+                Extended Long-Range
+              </MenuItem>
+            </Select>
             <Button variant='contained' color='primary'>
               Next
             </Button>
+            <Button
+              onClick={displayDescription}
+              variant='outlined'
+              color='secondary'>
+              Description
+            </Button>
+            <h3>{this.state.tripTypeDescription} </h3>
           </div>
         )
       },
@@ -127,6 +184,7 @@ export default class App extends Component {
                     this.setState({
                       progressValue: this.state.progressValue + 20
                     })
+                    checkForProgressCompletion()
                   }}
                   color='primary'
                   aria-label='go back'>
