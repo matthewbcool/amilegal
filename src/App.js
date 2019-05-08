@@ -18,10 +18,10 @@ import './App.css'
 export default class App extends Component {
   state = {
     progressValue: 0,
-    activeStep: 0,
+    activeStep: 5,
     slectedTime: 1200,
-    hour: '00',
-    minute: '00',
+    hour: '',
+    minute: '',
     stationOrigin: '',
     intTripType: '',
     tripTypeDescription: '',
@@ -30,7 +30,8 @@ export default class App extends Component {
     displaySignIn: '',
     displayStation: '',
     displayDoorClose: '',
-    onDutyMax: 15
+    onDutyMax: 15,
+    errorMsg: ''
   }
 
   render() {
@@ -38,15 +39,60 @@ export default class App extends Component {
       this.setState({ [event.target.name]: event.target.value })
       if (event.target.name === 'intTripType') {
         this.setState({ tripTypeDescription: '' })
+        clearErrorMsg()
       }
     }
 
     const getSignIn = () => {
-      stepForward()
-      let signIn = parseInt(this.state.hour)
+      if (this.state.hour === '' || this.state.minute === '') {
+        this.setState({ errorMsg: 'Please enter a valid time' })
+      } else {
+        stepForward()
+        let signIn = parseInt(this.state.hour)
+        setDutyMax(signIn)
+        clearErrorMsg()
+      }
 
       // use day.js to parse display times, then set state
+    }
 
+    const getStationCode = () => {
+      if (this.state.stationOrigin.length !== 3) {
+        this.setState({ errorMsg: 'Please enter a three letter station code' })
+      } else {
+        stepForward()
+        clearErrorMsg()
+      }
+    }
+    const getFlyingTime = () => {
+      if (this.state.flyingMinutes === '' || this.state.flyingHours === '') {
+        this.setState({ errorMsg: 'Please enter a valid flying time' })
+      } else {
+        stepForward()
+        clearErrorMsg()
+      }
+    }
+    const isInternational = event => {
+      if (event.target.name === 'yes' || event.target.innerHTML === 'Yes') {
+        this.setState({ activeStep: this.state.activeStep + 1 })
+        this.setState({ progressValue: this.state.progressValue + 20 })
+      } else {
+        this.setState({ activeStep: this.state.activeStep + 2 })
+        this.setState({ progressValue: this.state.progressValue + 40 })
+      }
+    }
+    const getTripType = () => {
+      if (this.state.intTripType === '') {
+        this.setState({
+          errorMsg:
+            'Please select a trip type, use the description button for explainations'
+        })
+      } else {
+        stepForward()
+        clearErrorMsg()
+      }
+    }
+    const setDutyMax = signIn => {
       if (signIn > 4 && signIn < 17) {
         this.setState({ onDutyMax: 15 })
       } else if (signIn > 16 && signIn < 23) {
@@ -79,6 +125,10 @@ export default class App extends Component {
       }
     }
 
+    const clearErrorMsg = () => {
+      this.setState({ errorMsg: '' })
+    }
+
     const stepForward = () => {
       this.setState({ activeStep: this.state.activeStep + 1 })
       this.setState({ progressValue: this.state.progressValue + 20 })
@@ -101,6 +151,7 @@ export default class App extends Component {
               hour={this.state.hour}
               minute={this.state.minute}
             />
+            <h5>{this.state.errorMsg}</h5>
             <Button
               variant='contained'
               color='primary'
@@ -123,7 +174,11 @@ export default class App extends Component {
               onChange={handleChange}
               margin='normal'
             />
-            <Button variant='contained' color='primary'>
+            <h5>{this.state.errorMsg}</h5>
+            <Button
+              onClick={getStationCode}
+              variant='contained'
+              color='primary'>
               Next
             </Button>
           </div>
@@ -133,106 +188,113 @@ export default class App extends Component {
         question: 'What is the scheduled flying time of your flight?',
         component: (
           <div className='dynamic-component-wrapper'>
-            <Select
-              value={this.state.flyingHours}
-              onChange={handleChange}
-              inputProps={{
-                name: 'flyingHours',
-                id: 'flyingHours'
-              }}>
-              <MenuItem value=''>
-                <em>Hours</em>
-              </MenuItem>
-              <MenuItem value={1}>1</MenuItem>
-              <MenuItem value={2}>2</MenuItem>
-              <MenuItem value={3}>3</MenuItem>
-              <MenuItem value={4}>4</MenuItem>
-              <MenuItem value={5}>5</MenuItem>
-              <MenuItem value={6}>6</MenuItem>
-              <MenuItem value={7}>7</MenuItem>
-              <MenuItem value={8}>8</MenuItem>
-              <MenuItem value={9}>9</MenuItem>
-              <MenuItem value={10}>10</MenuItem>
-              <MenuItem value={11}>11</MenuItem>
-              <MenuItem value={12}>12</MenuItem>
-              <MenuItem value={13}>13</MenuItem>
-              <MenuItem value={14}>14</MenuItem>
-              <MenuItem value={15}>15</MenuItem>
-              <MenuItem value={16}>16</MenuItem>
-            </Select>
-
-            <Select
-              value={this.state.flyingMinutes}
-              onChange={handleChange}
-              inputProps={{
-                name: 'flyingMinutes',
-                id: 'flyingMinutes'
-              }}>
-              <MenuItem value=''>
-                <em>Hours</em>
-              </MenuItem>
-              <MenuItem value={1}>1</MenuItem>
-              <MenuItem value={2}>2</MenuItem>
-              <MenuItem value={3}>3</MenuItem>
-              <MenuItem value={4}>4</MenuItem>
-              <MenuItem value={5}>5</MenuItem>
-              <MenuItem value={6}>6</MenuItem>
-              <MenuItem value={7}>7</MenuItem>
-              <MenuItem value={8}>8</MenuItem>
-              <MenuItem value={9}>9</MenuItem>
-              <MenuItem value={10}>10</MenuItem>
-              <MenuItem value={11}>11</MenuItem>
-              <MenuItem value={12}>12</MenuItem>
-              <MenuItem value={13}>13</MenuItem>
-              <MenuItem value={14}>14</MenuItem>
-              <MenuItem value={15}>15</MenuItem>
-              <MenuItem value={16}>16</MenuItem>
-              <MenuItem value={17}>17</MenuItem>
-              <MenuItem value={18}>18</MenuItem>
-              <MenuItem value={19}>19</MenuItem>
-              <MenuItem value={20}>20</MenuItem>
-              <MenuItem value={21}>21</MenuItem>
-              <MenuItem value={22}>22</MenuItem>
-              <MenuItem value={23}>23</MenuItem>
-              <MenuItem value={24}>24</MenuItem>
-              <MenuItem value={25}>25</MenuItem>
-              <MenuItem value={26}>26</MenuItem>
-              <MenuItem value={27}>27</MenuItem>
-              <MenuItem value={28}>28</MenuItem>
-              <MenuItem value={29}>29</MenuItem>
-              <MenuItem value={30}>30</MenuItem>
-              <MenuItem value={31}>31</MenuItem>
-              <MenuItem value={32}>32</MenuItem>
-              <MenuItem value={33}>33</MenuItem>
-              <MenuItem value={34}>34</MenuItem>
-              <MenuItem value={35}>35</MenuItem>
-              <MenuItem value={36}>36</MenuItem>
-              <MenuItem value={37}>37</MenuItem>
-              <MenuItem value={38}>38</MenuItem>
-              <MenuItem value={39}>39</MenuItem>
-              <MenuItem value={40}>40</MenuItem>
-              <MenuItem value={41}>41</MenuItem>
-              <MenuItem value={42}>42</MenuItem>
-              <MenuItem value={43}>43</MenuItem>
-              <MenuItem value={44}>44</MenuItem>
-              <MenuItem value={45}>45</MenuItem>
-              <MenuItem value={46}>46</MenuItem>
-              <MenuItem value={47}>47</MenuItem>
-              <MenuItem value={48}>48</MenuItem>
-              <MenuItem value={49}>49</MenuItem>
-              <MenuItem value={50}>50</MenuItem>
-              <MenuItem value={51}>51</MenuItem>
-              <MenuItem value={52}>52</MenuItem>
-              <MenuItem value={53}>53</MenuItem>
-              <MenuItem value={54}>54</MenuItem>
-              <MenuItem value={55}>55</MenuItem>
-              <MenuItem value={56}>56</MenuItem>
-              <MenuItem value={57}>57</MenuItem>
-              <MenuItem value={58}>58</MenuItem>
-              <MenuItem value={59}>59</MenuItem>
-            </Select>
-
-            <Button variant='contained' color='primary'>
+            <div className='flying-time-wrapper'>
+              <div className='hours-flying-wrapper'>
+                <Select
+                  value={this.state.flyingHours}
+                  onChange={handleChange}
+                  inputProps={{
+                    name: 'flyingHours',
+                    id: 'flyingHours'
+                  }}>
+                  <MenuItem value=''>
+                    <em>Hours</em>
+                  </MenuItem>
+                  <MenuItem value={1}>1</MenuItem>
+                  <MenuItem value={2}>2</MenuItem>
+                  <MenuItem value={3}>3</MenuItem>
+                  <MenuItem value={4}>4</MenuItem>
+                  <MenuItem value={5}>5</MenuItem>
+                  <MenuItem value={6}>6</MenuItem>
+                  <MenuItem value={7}>7</MenuItem>
+                  <MenuItem value={8}>8</MenuItem>
+                  <MenuItem value={9}>9</MenuItem>
+                  <MenuItem value={10}>10</MenuItem>
+                  <MenuItem value={11}>11</MenuItem>
+                  <MenuItem value={12}>12</MenuItem>
+                  <MenuItem value={13}>13</MenuItem>
+                  <MenuItem value={14}>14</MenuItem>
+                  <MenuItem value={15}>15</MenuItem>
+                  <MenuItem value={16}>16</MenuItem>
+                </Select>
+                <h5>Hours</h5>
+              </div>
+              <div className='minutes-flying-wrapper'>
+                <Select
+                  value={this.state.flyingMinutes}
+                  onChange={handleChange}
+                  inputProps={{
+                    name: 'flyingMinutes',
+                    id: 'flyingMinutes'
+                  }}>
+                  <MenuItem value=''>
+                    <em>Hours</em>
+                  </MenuItem>
+                  <MenuItem value={1}>1</MenuItem>
+                  <MenuItem value={2}>2</MenuItem>
+                  <MenuItem value={3}>3</MenuItem>
+                  <MenuItem value={4}>4</MenuItem>
+                  <MenuItem value={5}>5</MenuItem>
+                  <MenuItem value={6}>6</MenuItem>
+                  <MenuItem value={7}>7</MenuItem>
+                  <MenuItem value={8}>8</MenuItem>
+                  <MenuItem value={9}>9</MenuItem>
+                  <MenuItem value={10}>10</MenuItem>
+                  <MenuItem value={11}>11</MenuItem>
+                  <MenuItem value={12}>12</MenuItem>
+                  <MenuItem value={13}>13</MenuItem>
+                  <MenuItem value={14}>14</MenuItem>
+                  <MenuItem value={15}>15</MenuItem>
+                  <MenuItem value={16}>16</MenuItem>
+                  <MenuItem value={17}>17</MenuItem>
+                  <MenuItem value={18}>18</MenuItem>
+                  <MenuItem value={19}>19</MenuItem>
+                  <MenuItem value={20}>20</MenuItem>
+                  <MenuItem value={21}>21</MenuItem>
+                  <MenuItem value={22}>22</MenuItem>
+                  <MenuItem value={23}>23</MenuItem>
+                  <MenuItem value={24}>24</MenuItem>
+                  <MenuItem value={25}>25</MenuItem>
+                  <MenuItem value={26}>26</MenuItem>
+                  <MenuItem value={27}>27</MenuItem>
+                  <MenuItem value={28}>28</MenuItem>
+                  <MenuItem value={29}>29</MenuItem>
+                  <MenuItem value={30}>30</MenuItem>
+                  <MenuItem value={31}>31</MenuItem>
+                  <MenuItem value={32}>32</MenuItem>
+                  <MenuItem value={33}>33</MenuItem>
+                  <MenuItem value={34}>34</MenuItem>
+                  <MenuItem value={35}>35</MenuItem>
+                  <MenuItem value={36}>36</MenuItem>
+                  <MenuItem value={37}>37</MenuItem>
+                  <MenuItem value={38}>38</MenuItem>
+                  <MenuItem value={39}>39</MenuItem>
+                  <MenuItem value={40}>40</MenuItem>
+                  <MenuItem value={41}>41</MenuItem>
+                  <MenuItem value={42}>42</MenuItem>
+                  <MenuItem value={43}>43</MenuItem>
+                  <MenuItem value={44}>44</MenuItem>
+                  <MenuItem value={45}>45</MenuItem>
+                  <MenuItem value={46}>46</MenuItem>
+                  <MenuItem value={47}>47</MenuItem>
+                  <MenuItem value={48}>48</MenuItem>
+                  <MenuItem value={49}>49</MenuItem>
+                  <MenuItem value={50}>50</MenuItem>
+                  <MenuItem value={51}>51</MenuItem>
+                  <MenuItem value={52}>52</MenuItem>
+                  <MenuItem value={53}>53</MenuItem>
+                  <MenuItem value={54}>54</MenuItem>
+                  <MenuItem value={55}>55</MenuItem>
+                  <MenuItem value={56}>56</MenuItem>
+                  <MenuItem value={57}>57</MenuItem>
+                  <MenuItem value={58}>58</MenuItem>
+                  <MenuItem value={59}>59</MenuItem>
+                </Select>
+                <h5>minutes</h5>
+              </div>
+            </div>
+            <h5>{this.state.errorMsg}</h5>
+            <Button onClick={getFlyingTime} variant='contained' color='primary'>
               Next
             </Button>
           </div>
@@ -242,10 +304,18 @@ export default class App extends Component {
         question: 'Is this an international trip?',
         component: (
           <div className='dynamic-component-wrapper'>
-            <Button variant='contained' color='primary'>
+            <Button
+              onClick={isInternational}
+              name='yes'
+              variant='contained'
+              color='primary'>
               Yes
             </Button>
-            <Button variant='contained' color='secondary'>
+            <Button
+              onClick={isInternational}
+              name='no'
+              variant='contained'
+              color='secondary'>
               No
             </Button>
           </div>
@@ -255,37 +325,46 @@ export default class App extends Component {
         question: 'What kind of international trip is this?',
         component: (
           <div className='dynamic-component-wrapper'>
-            <Select
-              value={this.state.intTripType}
-              onChange={handleChange}
-              inputProps={{
-                name: 'intTripType',
-                id: 'int-trip-type'
-              }}>
-              <MenuItem value=''>
-                <em>Choose one for description</em>
-              </MenuItem>
-              <MenuItem value={'NON_LONG_RANGE'}>Non-Long Range</MenuItem>
-              <MenuItem value={'MID_RANGE'}>Mid-Range</MenuItem>
-              <MenuItem value={'LONG_RANGE'}>Long Range</MenuItem>
-              <MenuItem value={'EXTEND_LONG_RANGE'}>
-                Extended Long-Range
-              </MenuItem>
-            </Select>
-            <Button variant='contained' color='primary'>
-              Next
-            </Button>
-            <Button
-              onClick={displayDescription}
-              variant='outlined'
-              color='secondary'>
-              Description
-            </Button>
-            <h3>{this.state.tripTypeDescription} </h3>
+            <div className='int-type-wrapper'>
+              <h5>{this.state.errorMsg}</h5>
+              <Select
+                value={this.state.intTripType}
+                onChange={handleChange}
+                inputProps={{
+                  name: 'intTripType',
+                  id: 'int-trip-type'
+                }}>
+                <MenuItem value=''>
+                  <em>Choose one for description</em>
+                </MenuItem>
+                <MenuItem value={'NON_LONG_RANGE'}>Non-Long Range</MenuItem>
+                <MenuItem value={'MID_RANGE'}>Mid-Range</MenuItem>
+                <MenuItem value={'LONG_RANGE'}>Long Range</MenuItem>
+                <MenuItem value={'EXTEND_LONG_RANGE'}>
+                  Extended Long-Range
+                </MenuItem>
+              </Select>
+              <Button
+                style={{ margin: '5px 0px 0px 0px' }}
+                onClick={displayDescription}
+                variant='outlined'
+                color='secondary'>
+                Description
+              </Button>
+              <Button
+                onClick={getTripType}
+                style={{ margin: '15px 0px 0px 0px' }}
+                variant='contained'
+                color='primary'>
+                Next
+              </Button>
+
+              <h3>{this.state.tripTypeDescription} </h3>
+            </div>
           </div>
         )
       },
-      { question: "You're illegal at:" }
+      { question: 'Doors closed for departure at:' }
     ]
 
     return (

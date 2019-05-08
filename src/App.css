@@ -49,6 +49,18 @@
   font-size: 30px;
 }
 
+.hours-flying-wrapper,
+.minutes-flying-wrapper {
+  display: flex;
+}
+
+.int-type-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: inherit;
+}
+
 .card-actions {
   display: flex;
   justify-content: space-between;
