@@ -7,6 +7,7 @@
 .App-header {
   background-color: #282c34;
   color: white;
+  padding: 5px 0px 5px 5px;
 }
 
 .questions-card {
@@ -19,7 +20,31 @@
   width: 365px;
   height: 400px;
   margin: 10px 0px 10px 0px;
-  padding: 0px 5px 5px 5px;
+  padding: 15px 5px 5px 5px;
+}
+
+.dynamic-component-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 300px;
+  width: 290px;
+}
+
+.time-picker-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid black;
+  padding: 2px 2px 2px 2px;
+  border-radius: 5px;
+  box-shadow: #282c34 1px 2px 3px;
+  width: 180px;
+}
+
+.time-picker-select {
+  margin: 5px 5px 5px 5px;
 }
 
 .card-actions {

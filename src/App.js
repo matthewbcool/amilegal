@@ -8,6 +8,7 @@ import CardContent from '@material-ui/core/CardContent'
 import IconButton from '@material-ui/core/IconButton'
 import ArrowBackIos from '@material-ui/icons/ArrowBackIos'
 import ArrowForwardIos from '@material-ui/icons/ArrowForwardIos'
+import AirplanemodeActive from '@material-ui/icons/AirplanemodeActive'
 import TextField from '@material-ui/core/TextField'
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
@@ -25,7 +26,11 @@ export default class App extends Component {
     intTripType: '',
     tripTypeDescription: '',
     flyingHours: '',
-    flyingMinutes: ''
+    flyingMinutes: '',
+    displaySignIn: '',
+    displayStation: '',
+    displayDoorClose: '',
+    onDutyMax: 15
   }
 
   render() {
@@ -33,6 +38,19 @@ export default class App extends Component {
       this.setState({ [event.target.name]: event.target.value })
       if (event.target.name === 'intTripType') {
         this.setState({ tripTypeDescription: '' })
+      }
+    }
+
+    const getSignIn = () => {
+      this.setState({ activeStep: this.state.activeStep + 1 })
+      let signIn = parseInt(this.state.hour)
+
+      if (signIn > 4 && signIn < 17) {
+        this.setState({ onDutyMax: 15 })
+      } else if (signIn > 16 && signIn < 23) {
+        this.setState({ onDutyMax: 13 })
+      } else if ((signIn => 23 && signIn < 26) || signIn < 5) {
+        this.setState({ onDutyMax: 12 })
       }
     }
 
@@ -70,13 +88,17 @@ export default class App extends Component {
       {
         question: 'When was your sign-in?',
         component: (
-          <div>
+          <div className='dynamic-component-wrapper'>
             <TimePicker
               handleChange={handleChange}
               hour={this.state.hour}
               minute={this.state.minute}
             />
-            <Button variant='contained' color='primary'>
+            <Button
+              variant='contained'
+              color='primary'
+              size='large'
+              onClick={getSignIn}>
               Next
             </Button>
           </div>
@@ -85,7 +107,7 @@ export default class App extends Component {
       {
         question: 'Station code you signed in from?',
         component: (
-          <div>
+          <div className='dynamic-component-wrapper'>
             <TextField
               id='station-orgin'
               name='stationOrigin'
@@ -103,7 +125,7 @@ export default class App extends Component {
       {
         question: 'What is the scheduled flying time of your flight?',
         component: (
-          <div>
+          <div className='dynamic-component-wrapper'>
             <Select
               value={this.state.flyingHours}
               onChange={handleChange}
@@ -212,7 +234,7 @@ export default class App extends Component {
       {
         question: 'Is this an international trip?',
         component: (
-          <div>
+          <div className='dynamic-component-wrapper'>
             <Button variant='contained' color='primary'>
               Yes
             </Button>
@@ -225,7 +247,7 @@ export default class App extends Component {
       {
         question: 'What kind of international trip is this?',
         component: (
-          <div>
+          <div className='dynamic-component-wrapper'>
             <Select
               value={this.state.intTripType}
               onChange={handleChange}
