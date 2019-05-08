@@ -19,8 +19,7 @@
   transition: 1s;
   width: 365px;
   height: 400px;
-  margin: 10px 0px 10px 0px;
-  padding: 15px 5px 5px 5px;
+  margin: 5px 5px 5px 5px;
 }
 
 .dynamic-component-wrapper {
@@ -75,6 +74,8 @@
   width: 365px;
   height: 100px;
   display: flex;
+  justify-content: space-evenly;
+  padding: 5px 8px 5px 8px;
   align-items: baseline;
 }
 

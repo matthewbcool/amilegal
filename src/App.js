@@ -5,11 +5,10 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import Grid from '@material-ui/core/Grid'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Fade from '@material-ui/core/Fade'
+import CardHeader from '@material-ui/core/CardHeader'
 import CardContent from '@material-ui/core/CardContent'
 import IconButton from '@material-ui/core/IconButton'
 import ArrowBackIos from '@material-ui/icons/ArrowBackIos'
-import ArrowForwardIos from '@material-ui/icons/ArrowForwardIos'
-import AirplanemodeActive from '@material-ui/icons/AirplanemodeActive'
 import TextField from '@material-ui/core/TextField'
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
@@ -186,13 +185,6 @@ export default class App extends Component {
       this.setState({ progressValue: this.state.progressValue + 20 })
     }
 
-    const checkForProgressCompletion = () => {
-      if (this.state.activeStep === 4) {
-        this.setState({
-          progressValue: 100
-        })
-      }
-    }
     const stepperData = [
       {
         question: 'When was your sign-in?',
@@ -222,6 +214,7 @@ export default class App extends Component {
               id='station-orgin'
               name='stationOrigin'
               label='Station Code'
+              size='large'
               value={this.state.stationOrigin}
               onChange={handleChange}
               margin='normal'
@@ -426,16 +419,25 @@ export default class App extends Component {
         )
       },
       {
-        question: 'Doors closed for departure at: ',
+        question: 'Ready to depart with door closed ',
         component: (
           <div className='dynamic-component-wrapper'>
-            <Button
-              onClick={calulateLegality}
-              variant='contained'
-              color='primary'>
-              Reveal Legality
-            </Button>
-            {this.state.legalityTime}
+            <div>
+              {this.state.legalityTime === '' ? (
+                <Button
+                  onClick={calulateLegality}
+                  variant='contained'
+                  color='primary'>
+                  Reveal Legality
+                </Button>
+              ) : null}
+
+              <Fade in={this.state.legalityTime !== ''}>
+                <h1>{`${this.state.legalityTime} ${
+                  this.state.stationOrigin
+                } time`}</h1>
+              </Fade>
+            </div>
           </div>
         )
       }
@@ -455,9 +457,10 @@ export default class App extends Component {
         <Grid container direction='column' justify='center' alignItems='center'>
           <Grid item xs={12}>
             <Card raised className='questions-card'>
-              <h1>{stepperData[this.state.activeStep].question}</h1>
-
               <CardContent>
+                <h1 style={{ margin: '55px 0px 0px 0px' }}>
+                  {stepperData[this.state.activeStep].question}
+                </h1>
                 {stepperData[this.state.activeStep].component}
               </CardContent>
               <div className='card-actions'>
@@ -481,14 +484,22 @@ export default class App extends Component {
           </Grid>
           <Grid item xs={12}>
             <Card raised className='results-card'>
-              <p>Sign In: {this.state.displaySignIn}</p>
-              <p>Origin Station: {this.state.displayStation}</p>
-              <p>Next Flying Time: {this.state.displayFlyingTime}</p>
-              <p>International: {this.state.displayInt}</p>
+              <div className='display-wrap'>
+                <p>Sign In:</p> <h5>{this.state.displaySignIn}</h5>
+              </div>
+              <div className='display-wrap'>
+                <p>Origin Station:</p> <h5>{this.state.displayStation}</h5>
+              </div>
+              <div className='display-wrap'>
+                <p>Next Flying Time:</p> <h5>{this.state.displayFlyingTime}</h5>
+              </div>
+              <div className='display-wrap'>
+                <p>Int:</p> <h5>{this.state.displayInt}</h5>
+              </div>
             </Card>
           </Grid>
         </Grid>
-        <footer className='footer'>this is the footer</footer>{' '}
+        <footer className='footer'> © 2019 Cool Dev Labs </footer>{' '}
       </div>
     )
   }

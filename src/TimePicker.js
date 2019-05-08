@@ -56,7 +56,7 @@ class TimePicker extends React.Component {
             <MenuItem value={24}>00</MenuItem>
           </Select>
         </FormControl>
-        <h1 style={{ margin: '0px 10px 0px 0px' }}>:</h1>
+        <h1 style={{ margin: '0px 10px 0px 10px' }}>:</h1>
         <FormControl>
           <InputLabel
             style={{ padding: '0px 0px 2px 0px', margin: '5px 0px 0px 0px' }}
