@@ -13,12 +13,13 @@ import TextField from '@material-ui/core/TextField'
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
 import TimePicker from './TimePicker'
+import dayjs from 'dayjs'
 import './App.css'
 
 export default class App extends Component {
   state = {
     progressValue: 0,
-    activeStep: 5,
+    activeStep: 0,
     slectedTime: 1200,
     hour: '',
     minute: '',
@@ -31,7 +32,8 @@ export default class App extends Component {
     displayStation: '',
     displayDoorClose: '',
     onDutyMax: 15,
-    errorMsg: ''
+    errorMsg: '',
+    internationalDebrief: false
   }
 
   render() {
@@ -76,6 +78,7 @@ export default class App extends Component {
       if (event.target.name === 'yes' || event.target.innerHTML === 'Yes') {
         this.setState({ activeStep: this.state.activeStep + 1 })
         this.setState({ progressValue: this.state.progressValue + 20 })
+        this.setState({ internationalDebrief: true })
       } else {
         this.setState({ activeStep: this.state.activeStep + 2 })
         this.setState({ progressValue: this.state.progressValue + 40 })

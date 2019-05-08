@@ -15,8 +15,13 @@ class TimePicker extends React.Component {
     return (
       <form className='time-picker-form' autoComplete='off'>
         <FormControl>
-          <InputLabel htmlFor='hour'>Hour</InputLabel>
+          <InputLabel
+            style={{ padding: '0px 0px 2px 0px', margin: '5px 0px 0px 0px' }}
+            htmlFor='hour'>
+            Hour
+          </InputLabel>
           <Select
+            style={{ fontSize: '2rem', padding: '0px 5px 5px 0px' }}
             value={this.props.hour}
             className='time-picker-select'
             onChange={this.props.handleChange}
@@ -53,8 +58,13 @@ class TimePicker extends React.Component {
         </FormControl>
         <h1>:</h1>
         <FormControl>
-          <InputLabel htmlFor='minute'>Minutes</InputLabel>
+          <InputLabel
+            style={{ padding: '0px 0px 2px 0px', margin: '5px 0px 0px 0px' }}
+            htmlFor='minute'>
+            Min
+          </InputLabel>
           <Select
+            style={{ fontSize: '2rem', padding: '0px 5px 5px 0px' }}
             value={this.props.minute}
             className='time-picker-select'
             onChange={this.props.handleChange}
