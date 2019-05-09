@@ -6,8 +6,11 @@
 
 .App-header {
   background-color: #282c34;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
   color: white;
-  padding: 5px 0px 5px 5px;
+  padding: 5px 5px 5px 0px;
 }
 
 .questions-card {

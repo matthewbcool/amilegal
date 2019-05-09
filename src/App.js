@@ -447,6 +447,21 @@ export default class App extends Component {
         <CssBaseline />
         <header className='App-header'>
           <h1>AmILegal</h1>
+          <IconButton
+            style={{ margin: '0px 0px 10px 0px' }}
+            onClick={() => {
+              if (this.state.activeStep === 0) {
+              } else {
+                this.setState({ activeStep: this.state.activeStep - 1 })
+                this.setState({
+                  progressValue: this.state.progressValue - 20
+                })
+              }
+            }}
+            color='primary'
+            aria-label='go back'>
+            <ArrowBackIos />
+          </IconButton>
         </header>
         <LinearProgress
           style={{ height: '25px' }}
@@ -457,28 +472,12 @@ export default class App extends Component {
           <Grid item xs={12}>
             <Card raised className='questions-card'>
               <CardContent>
-                <h1 style={{ margin: '55px 0px 0px 0px' }}>
+                <h1 style={{ margin: '15px 0px 0px 0px' }}>
                   {stepperData[this.state.activeStep].question}
                 </h1>
                 {stepperData[this.state.activeStep].component}
               </CardContent>
-              <div className='card-actions'>
-                <IconButton
-                  style={{ margin: '0px 0px 10px 0px' }}
-                  onClick={() => {
-                    if (this.state.activeStep === 0) {
-                    } else {
-                      this.setState({ activeStep: this.state.activeStep - 1 })
-                      this.setState({
-                        progressValue: this.state.progressValue - 20
-                      })
-                    }
-                  }}
-                  color='primary'
-                  aria-label='go back'>
-                  <ArrowBackIos />
-                </IconButton>
-              </div>
+              <div className='card-actions' />
             </Card>
           </Grid>
           <Grid item xs={12}>
