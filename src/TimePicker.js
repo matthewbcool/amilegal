@@ -1,8 +1,6 @@
 import React from 'react'
-
 import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
-import ChevronRight from '@material-ui/icons/ChevronRight'
 import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
 import AccessTime from '@material-ui/icons/AccessTime'
