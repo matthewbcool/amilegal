@@ -1,10 +1,8 @@
 import React from 'react'
-import Input from '@material-ui/core/Input'
-import OutlinedInput from '@material-ui/core/OutlinedInput'
-import FilledInput from '@material-ui/core/FilledInput'
+
 import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
-import FormHelperText from '@material-ui/core/FormHelperText'
+import ChevronRight from '@material-ui/icons/ChevronRight'
 import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
 import AccessTime from '@material-ui/icons/AccessTime'
@@ -21,7 +19,11 @@ class TimePicker extends React.Component {
             Hour
           </InputLabel>
           <Select
-            style={{ fontSize: '2rem', padding: '0px 0px 5px 0px' }}
+            style={{
+              fontSize: '2rem',
+              padding: '0px 0px 5px 0px',
+              width: '70px'
+            }}
             value={this.props.hour}
             className='time-picker-select'
             onChange={this.props.handleChange}
@@ -61,10 +63,14 @@ class TimePicker extends React.Component {
           <InputLabel
             style={{ padding: '0px 0px 2px 0px', margin: '5px 0px 0px 0px' }}
             htmlFor='minute'>
-            Min
+            Minutes
           </InputLabel>
           <Select
-            style={{ fontSize: '2rem', padding: '0px 0px 5px 0px' }}
+            style={{
+              fontSize: '2rem',
+              padding: '0px 0px 5px 0px',
+              width: '70px'
+            }}
             value={this.props.minute}
             className='time-picker-select'
             onChange={this.props.handleChange}

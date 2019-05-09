@@ -28,7 +28,7 @@
   justify-content: space-around;
   align-items: center;
   height: 300px;
-  width: 290px;
+  width: 365px;
 }
 
 .time-picker-form {
@@ -39,7 +39,7 @@
   padding: 2px 2px 2px 2px;
   border-radius: 5px;
   box-shadow: #282c34 1px 2px 3px;
-  width: 180px;
+  width: 220px;
   height: 60px;
 }
 
@@ -51,8 +51,6 @@
 .hours-flying-wrapper,
 .minutes-flying-wrapper {
   display: flex;
-  align-items: baseline;
-  align-content: center;
   margin: 20px 0px 0px 0px;
 }
 
