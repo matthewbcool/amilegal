@@ -451,6 +451,12 @@ export default class App extends Component {
             style={{ margin: '0px 0px 10px 0px' }}
             onClick={() => {
               if (this.state.activeStep === 0) {
+              } else if (
+                this.state.activeStep === 5 &&
+                !this.state.isInternational
+              ) {
+                this.setState({ activeStep: this.state.activeStep - 2 })
+                this.setState({ progressValue: this.state.progressValue - 40 })
               } else {
                 this.setState({ activeStep: this.state.activeStep - 1 })
                 this.setState({
