@@ -13,9 +13,8 @@ This will save them time, be convenient, and reduce stress for crews as well as 
 Contributions welcome, particularly with code refactoring, tests, and styling. I will probably spend less than an hour a week on this project but ping me if I haven't responded within 7 days.
 
 ## Docs: 
-# Material-UI: https://material-ui.com/ . 
-# dayjs: https://github.com/iamkun/dayjs/blob/dev/docs/en/API-reference.md . 
-
+### Material-UI: https://material-ui.com/ . 
+### dayjs: https://github.com/iamkun/dayjs/blob/dev/docs/en/API-reference.md . 
 
 ### Bootstrapped with create-react-app: 
 
