@@ -1,10 +1,10 @@
-import React from 'react'
-import InputLabel from '@material-ui/core/InputLabel'
-import MenuItem from '@material-ui/core/MenuItem'
-import FormControl from '@material-ui/core/FormControl'
-import Select from '@material-ui/core/Select'
-import AccessTime from '@material-ui/icons/AccessTime'
-import './App.css'
+import React from 'react';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import AccessTime from '@material-ui/icons/AccessTime';
+import './App.css';
 
 class TimePicker extends React.Component {
   render() {
@@ -12,7 +12,7 @@ class TimePicker extends React.Component {
       <form className='time-picker-form' autoComplete='off'>
         <FormControl>
           <InputLabel
-            style={{ padding: '0px 0px 2px 0px', margin: '5px 0px 0px 0px' }}
+            style={{padding: '0px 0px 2px 0px', margin: '5px 0px 0px 0px'}}
             htmlFor='hour'>
             Hour
           </InputLabel>
@@ -20,14 +20,14 @@ class TimePicker extends React.Component {
             style={{
               fontSize: '2rem',
               padding: '0px 0px 5px 0px',
-              width: '70px'
+              width: '70px',
             }}
             value={this.props.hour}
             className='time-picker-select'
             onChange={this.props.handleChange}
             inputProps={{
               name: 'hour',
-              id: 'hour'
+              id: 'hour',
             }}>
             <MenuItem value=''>Hour</MenuItem>
             <MenuItem value={1}>01</MenuItem>
@@ -56,10 +56,10 @@ class TimePicker extends React.Component {
             <MenuItem value={24}>00</MenuItem>
           </Select>
         </FormControl>
-        <h1 style={{ margin: '0px 10px 0px 10px' }}>:</h1>
+        <h1 style={{margin: '0px 10px 0px 10px'}}>:</h1>
         <FormControl>
           <InputLabel
-            style={{ padding: '0px 0px 2px 0px', margin: '5px 0px 0px 0px' }}
+            style={{padding: '0px 0px 2px 0px', margin: '5px 0px 0px 0px'}}
             htmlFor='minute'>
             Minutes
           </InputLabel>
@@ -67,14 +67,14 @@ class TimePicker extends React.Component {
             style={{
               fontSize: '2rem',
               padding: '0px 0px 5px 0px',
-              width: '70px'
+              width: '70px',
             }}
             value={this.props.minute}
             className='time-picker-select'
             onChange={this.props.handleChange}
             inputProps={{
               name: 'minute',
-              id: 'minute'
+              id: 'minute',
             }}>
             <MenuItem value=''>Minutes</MenuItem>
             <MenuItem value={1}>01</MenuItem>
@@ -141,8 +141,8 @@ class TimePicker extends React.Component {
         </FormControl>
         <AccessTime fontSize='large' />
       </form>
-    )
+    );
   }
 }
 
-export default TimePicker
+export default TimePicker;
