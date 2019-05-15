@@ -5,6 +5,9 @@ We want them to be able to navigate through the stepper quickly, see the text ea
 
 This will save them time, be convenient, and reduce stress for crews as well as ease the load on crew tracking services. 
 
+
+## Install
+```yarn install```
 ## To run
 ```yarn start```
 
