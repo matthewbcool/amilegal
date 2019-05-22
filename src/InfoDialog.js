@@ -53,8 +53,8 @@ function InfoDialog() {
             sign-ins Be aware of your homebase times when coming back from
             trips. Will fix as soon as I can get to it.
             <br />
-            DISCLAIMER: Use this tool to give you a good estimation but always
-            confirm with crew tracking and double check. (;
+            OBLIGATORY DISCLAIMER: Use this tool to give you a good estimation
+            but always confirm with crew tracking and double check.
           </DialogContentText>
         </DialogContent>
         <DialogActions>
