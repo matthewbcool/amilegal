@@ -1,19 +1,20 @@
-import React, {Component} from 'react';
-import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Grid from '@material-ui/core/Grid';
-import LinearProgress from '@material-ui/core/LinearProgress';
-import Fade from '@material-ui/core/Fade';
-import CardContent from '@material-ui/core/CardContent';
-import IconButton from '@material-ui/core/IconButton';
-import ArrowBackIos from '@material-ui/icons/ArrowBackIos';
-import TextField from '@material-ui/core/TextField';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import TimePicker from './TimePicker';
-import dayjs from 'dayjs';
-import './App.css';
+import React, { Component } from 'react'
+import Button from '@material-ui/core/Button'
+import Card from '@material-ui/core/Card'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import Grid from '@material-ui/core/Grid'
+import LinearProgress from '@material-ui/core/LinearProgress'
+import Fade from '@material-ui/core/Fade'
+import CardContent from '@material-ui/core/CardContent'
+import IconButton from '@material-ui/core/IconButton'
+import ArrowBackIos from '@material-ui/icons/ArrowBackIos'
+import TextField from '@material-ui/core/TextField'
+import Select from '@material-ui/core/Select'
+import MenuItem from '@material-ui/core/MenuItem'
+import TimePicker from './TimePicker'
+import dayjs from 'dayjs'
+import InfoDialog from './InfoDialog'
+import './App.css'
 
 export default class App extends Component {
   state = {
@@ -36,153 +37,153 @@ export default class App extends Component {
     onDutyMax: 15,
     errorMsg: '',
     internationalDebrief: false,
-    legalityTime: '',
+    legalityTime: ''
   }
 
   render() {
-    const handleChange = (event) => {
-      this.setState({[event.target.name]: event.target.value});
+    const handleChange = event => {
+      this.setState({ [event.target.name]: event.target.value })
       if (event.target.name === 'intTripType') {
-        this.setState({tripTypeDescription: ''});
-        clearErrorMsg();
+        this.setState({ tripTypeDescription: '' })
+        clearErrorMsg()
       }
-    };
+    }
 
     const getSignIn = () => {
       if (this.state.hour === '' || this.state.minute === '') {
-        this.setState({errorMsg: 'Please enter a valid time'});
+        this.setState({ errorMsg: 'Please enter a valid time' })
       } else {
-        stepForward();
-        const signIn = parseInt(this.state.hour);
-        setDutyMax(signIn);
-        setDisplaySignIn();
-        clearErrorMsg();
+        stepForward()
+        const signIn = parseInt(this.state.hour)
+        setDutyMax(signIn)
+        setDisplaySignIn()
+        clearErrorMsg()
       }
-    };
+    }
 
     const setDisplaySignIn = () => {
       // also saves the dayJS object to state
       const signInTime = dayjs()
-          .hour(this.state.hour)
-          .minute(this.state.minute);
-      this.setState({dayJsSignIn: signInTime});
-      const displaySignIn = signInTime.format('HHmm');
-      this.setState({displaySignIn: displaySignIn});
-    };
+        .hour(this.state.hour)
+        .minute(this.state.minute)
+      this.setState({ dayJsSignIn: signInTime })
+      const displaySignIn = signInTime.format('HHmm')
+      this.setState({ displaySignIn: displaySignIn })
+    }
 
     const getStationCode = () => {
       if (this.state.stationOrigin.length !== 3) {
-        this.setState({errorMsg: 'Please enter a three letter station code'});
+        this.setState({ errorMsg: 'Please enter a three letter station code' })
       } else {
-        stepForward();
-        this.setState({displayStation: this.state.stationOrigin});
-        clearErrorMsg();
+        stepForward()
+        this.setState({ displayStation: this.state.stationOrigin })
+        clearErrorMsg()
       }
-    };
+    }
     const getFlyingTime = () => {
       if (this.state.flyingMinutes === '' || this.state.flyingHours === '') {
-        this.setState({errorMsg: 'Please enter a valid flying time'});
+        this.setState({ errorMsg: 'Please enter a valid flying time' })
       } else {
-        stepForward();
+        stepForward()
         this.setState({
           displayFlyingTime: `${this.state.flyingHours} hours ${
             this.state.flyingMinutes
-          } minutes`,
-        });
-        clearErrorMsg();
+          } minutes`
+        })
+        clearErrorMsg()
       }
-    };
-    const isInternational = (event) => {
+    }
+    const isInternational = event => {
       if (event.target.name === 'yes' || event.target.innerHTML === 'Yes') {
-        this.setState({activeStep: this.state.activeStep + 1});
-        this.setState({progressValue: this.state.progressValue + 20});
-        this.setState({internationalDebrief: true});
-        this.setState({displayInt: 'Yes'});
+        this.setState({ activeStep: this.state.activeStep + 1 })
+        this.setState({ progressValue: this.state.progressValue + 20 })
+        this.setState({ internationalDebrief: true })
+        this.setState({ displayInt: 'Yes' })
       } else {
-        this.setState({activeStep: this.state.activeStep + 2});
-        this.setState({progressValue: this.state.progressValue + 40});
-        this.setState({displayInt: 'No'});
+        this.setState({ activeStep: this.state.activeStep + 2 })
+        this.setState({ progressValue: this.state.progressValue + 40 })
+        this.setState({ displayInt: 'No' })
       }
-    };
+    }
     const getTripType = () => {
       if (this.state.intTripType === '') {
         this.setState({
           errorMsg:
-            'Please select a trip type, use the description button for explainations',
-        });
+            'Please select a trip type, use the description button for explainations'
+        })
       } else {
-        stepForward();
-        clearErrorMsg();
-        setIntDutyDay();
+        stepForward()
+        clearErrorMsg()
+        setIntDutyDay()
       }
-    };
+    }
     const calulateLegality = () => {
-      const signInObj = this.state.dayJsSignIn;
-      let signInPlusDuty = signInObj.add(this.state.onDutyMax, 'hour');
+      const signInObj = this.state.dayJsSignIn
+      let signInPlusDuty = signInObj.add(this.state.onDutyMax, 'hour')
       if (this.state.internationalDebrief === true) {
-        signInPlusDuty = signInPlusDuty.subtract(30, 'minute');
+        signInPlusDuty = signInPlusDuty.subtract(30, 'minute')
       } else {
-        signInPlusDuty = signInPlusDuty.subtract(15, 'minute');
+        signInPlusDuty = signInPlusDuty.subtract(15, 'minute')
       }
       signInPlusDuty = signInPlusDuty
-          .subtract(this.state.flyingHours, 'hour')
-          .subtract(this.state.flyingMinutes, 'minute');
-      this.setState({legalityTime: signInPlusDuty.format('HHmm')});
-    };
-    const setDutyMax = (signIn) => {
+        .subtract(this.state.flyingHours, 'hour')
+        .subtract(this.state.flyingMinutes, 'minute')
+      this.setState({ legalityTime: signInPlusDuty.format('HHmm') })
+    }
+    const setDutyMax = signIn => {
       if (signIn > 4 && signIn < 17) {
-        this.setState({onDutyMax: 15});
+        this.setState({ onDutyMax: 15 })
       } else if (signIn > 16 && signIn < 23) {
-        this.setState({onDutyMax: 13});
-      } else if (((signIn) => 23 && signIn < 26) || signIn < 5) {
-        this.setState({onDutyMax: 12});
+        this.setState({ onDutyMax: 13 })
+      } else if ((signIn => 23 && signIn < 26) || signIn < 5) {
+        this.setState({ onDutyMax: 12 })
       }
-    };
+    }
     const setIntDutyDay = () => {
       if (this.state.intTripType === 'NON_LONG_RANGE') {
-        this.setState({onDutyMax: 16});
+        this.setState({ onDutyMax: 16 })
       } else if (this.state.intTripType === 'MID_RANGE') {
-        this.setState({onDutyMax: 17});
+        this.setState({ onDutyMax: 17 })
       } else if (this.state.intTripType === 'LONG_RANGE') {
-        this.setState({onDutyMax: 18});
+        this.setState({ onDutyMax: 18 })
       } else if (this.state.intTripType === 'EXTEND_LONG_RANGE') {
-        this.setState({onDutyMax: 19});
+        this.setState({ onDutyMax: 19 })
       } else {
-        console.log('nothihng set');
+        console.log('nothihng set')
       }
-    };
+    }
 
     const displayDescription = () => {
       if (this.state.intTripType === 'NON_LONG_RANGE') {
         this.setState({
           tripTypeDescription:
-            'A duty period with any mix international or international and domestic segments',
-        });
+            'A duty period with any mix international or international and domestic segments'
+        })
       } else if (this.state.intTripType === 'MID_RANGE') {
         this.setState({
           tripTypeDescription:
-            'A duty period including one domestic and one IPD, or a one day turn (2 NIPDs) or two NIPD segments',
-        });
+            'A duty period including one domestic and one IPD, or a one day turn (2 NIPDs) or two NIPD segments'
+        })
       } else if (this.state.intTripType === 'LONG_RANGE') {
         this.setState({
           tripTypeDescription:
-            'A flight leg over 12 hours but not more than 14.15',
-        });
+            'A flight leg over 12 hours but not more than 14.15'
+        })
       } else if (this.state.intTripType === 'EXTEND_LONG_RANGE') {
         this.setState({
-          tripTypeDescription: 'A duty period with above 14.15 sceduled flying',
-        });
+          tripTypeDescription: 'A duty period with above 14.15 sceduled flying'
+        })
       }
-    };
+    }
 
     const clearErrorMsg = () => {
-      this.setState({errorMsg: ''});
-    };
+      this.setState({ errorMsg: '' })
+    }
 
     const stepForward = () => {
-      this.setState({activeStep: this.state.activeStep + 1});
-      this.setState({progressValue: this.state.progressValue + 20});
-    };
+      this.setState({ activeStep: this.state.activeStep + 1 })
+      this.setState({ progressValue: this.state.progressValue + 20 })
+    }
 
     const stepperData = [
       {
@@ -203,7 +204,7 @@ export default class App extends Component {
               Next
             </Button>
           </div>
-        ),
+        )
       },
       {
         question: 'Station code you signed in from?',
@@ -226,7 +227,7 @@ export default class App extends Component {
               Next
             </Button>
           </div>
-        ),
+        )
       },
       {
         question: 'Scheduled flying time of your last leg?',
@@ -237,13 +238,13 @@ export default class App extends Component {
                 <Select
                   style={{
                     width: '80px',
-                    fontSize: '2rem',
+                    fontSize: '2rem'
                   }}
                   value={this.state.flyingHours}
                   onChange={handleChange}
                   inputProps={{
                     name: 'flyingHours',
-                    id: 'flyingHours',
+                    id: 'flyingHours'
                   }}>
                   <MenuItem value=''>
                     <em>Hours</em>
@@ -271,13 +272,13 @@ export default class App extends Component {
                 <Select
                   style={{
                     width: '80px',
-                    fontSize: '2rem',
+                    fontSize: '2rem'
                   }}
                   value={this.state.flyingMinutes}
                   onChange={handleChange}
                   inputProps={{
                     name: 'flyingMinutes',
-                    id: 'flyingMinutes',
+                    id: 'flyingMinutes'
                   }}>
                   <MenuItem value=''>
                     <em>Minutes</em>
@@ -351,7 +352,7 @@ export default class App extends Component {
               Next
             </Button>
           </div>
-        ),
+        )
       },
       {
         question: 'Is this an international trip?',
@@ -372,7 +373,7 @@ export default class App extends Component {
               No
             </Button>
           </div>
-        ),
+        )
       },
       {
         question: 'What kind of international trip is this?',
@@ -385,7 +386,7 @@ export default class App extends Component {
                 onChange={handleChange}
                 inputProps={{
                   name: 'intTripType',
-                  id: 'int-trip-type',
+                  id: 'int-trip-type'
                 }}>
                 <MenuItem value=''>
                   <em>Choose one for description</em>
@@ -398,7 +399,7 @@ export default class App extends Component {
                 </MenuItem>
               </Select>
               <Button
-                style={{margin: '5px 0px 0px 0px'}}
+                style={{ margin: '5px 0px 0px 0px' }}
                 onClick={displayDescription}
                 variant='outlined'
                 color='secondary'>
@@ -406,7 +407,7 @@ export default class App extends Component {
               </Button>
               <Button
                 onClick={getTripType}
-                style={{margin: '15px 0px 0px 0px'}}
+                style={{ margin: '15px 0px 0px 0px' }}
                 variant='contained'
                 color='primary'>
                 Next
@@ -415,7 +416,7 @@ export default class App extends Component {
               <h3>{this.state.tripTypeDescription} </h3>
             </div>
           </div>
-        ),
+        )
       },
       {
         question: 'Ready to depart with door closed ',
@@ -438,30 +439,30 @@ export default class App extends Component {
               </Fade>
             </div>
           </div>
-        ),
-      },
-    ];
+        )
+      }
+    ]
 
     return (
       <div className='App'>
         <CssBaseline />
         <header className='App-header'>
-          <h1>AmILegal</h1>
+          <h1 className='main-title'>AmILegal</h1>
           <IconButton
-            style={{margin: '0px 0px 10px 0px'}}
+            style={{ margin: '0px 0px 10px 0px' }}
             onClick={() => {
               if (this.state.activeStep === 0) {
               } else if (
                 this.state.activeStep === 5 &&
                 !this.state.isInternational
               ) {
-                this.setState({activeStep: this.state.activeStep - 2});
-                this.setState({progressValue: this.state.progressValue - 40});
+                this.setState({ activeStep: this.state.activeStep - 2 })
+                this.setState({ progressValue: this.state.progressValue - 40 })
               } else {
-                this.setState({activeStep: this.state.activeStep - 1});
+                this.setState({ activeStep: this.state.activeStep - 1 })
                 this.setState({
-                  progressValue: this.state.progressValue - 20,
-                });
+                  progressValue: this.state.progressValue - 20
+                })
               }
             }}
             color='primary'
@@ -470,7 +471,7 @@ export default class App extends Component {
           </IconButton>
         </header>
         <LinearProgress
-          style={{height: '25px'}}
+          style={{ height: '25px' }}
           variant='determinate'
           value={this.state.progressValue}
         />
@@ -478,7 +479,7 @@ export default class App extends Component {
           <Grid item xs={12}>
             <Card raised className='questions-card'>
               <CardContent>
-                <h1 style={{margin: '15px 0px 0px 0px'}}>
+                <h1 style={{ margin: '15px 0px 0px 0px' }}>
                   {stepperData[this.state.activeStep].question}
                 </h1>
                 {stepperData[this.state.activeStep].component}
@@ -503,8 +504,11 @@ export default class App extends Component {
             </Card>
           </Grid>
         </Grid>
-        <footer className='footer'> © 2019 Cool Dev Labs </footer>{' '}
+        <footer className='footer'>
+          1.0.0 © 2019 Cool Dev Labs
+          <InfoDialog />
+        </footer>
       </div>
-    );
+    )
   }
 }
