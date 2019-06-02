@@ -224,6 +224,7 @@ export default class App extends Component {
             <Button
               onClick={getStationCode}
               variant='contained'
+              size='large'
               color='primary'>
               Next
             </Button>
@@ -349,7 +350,11 @@ export default class App extends Component {
               </div>
             </div>
             <h5>{this.state.errorMsg}</h5>
-            <Button onClick={getFlyingTime} variant='contained' color='primary'>
+            <Button
+              onClick={getFlyingTime}
+              variant='contained'
+              color='primary'
+              size='large'>
               Next
             </Button>
           </div>
@@ -363,12 +368,14 @@ export default class App extends Component {
               onClick={isInternational}
               name='yes'
               variant='contained'
+              size='large'
               color='primary'>
               Yes
             </Button>
             <Button
               onClick={isInternational}
               name='no'
+              size='large'
               variant='contained'
               color='secondary'>
               No
@@ -403,6 +410,7 @@ export default class App extends Component {
                 style={{ margin: '5px 0px 0px 0px' }}
                 onClick={displayDescription}
                 variant='outlined'
+                size='large'
                 color='secondary'>
                 Description
               </Button>
@@ -410,6 +418,7 @@ export default class App extends Component {
                 onClick={getTripType}
                 style={{ margin: '15px 0px 0px 0px' }}
                 variant='contained'
+                size='large'
                 color='primary'>
                 Next
               </Button>
@@ -504,7 +513,7 @@ export default class App extends Component {
           </Grid>
         </Grid>
         <footer className='footer'>
-          <p>1.0.1 </p>© 2019 Cool Dev Labs
+          <p>1.0.3 </p>© 2019 Cool Dev Labs
           <InfoDialog />
         </footer>
       </div>
