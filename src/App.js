@@ -43,6 +43,7 @@ export default class App extends Component {
   render() {
     const handleChange = event => {
       this.setState({ [event.target.name]: event.target.value })
+      this.setState({ legalityTime: '' })
       if (event.target.name === 'intTripType') {
         this.setState({ tripTypeDescription: '' })
         clearErrorMsg()
@@ -423,14 +424,12 @@ export default class App extends Component {
         component: (
           <div className='dynamic-component-wrapper'>
             <div>
-              {this.state.legalityTime === '' ? (
-                <Button
-                  onClick={calulateLegality}
-                  variant='contained'
-                  color='primary'>
-                  Reveal Legality
-                </Button>
-              ) : null}
+              <Button
+                onClick={calulateLegality}
+                variant='contained'
+                color='primary'>
+                Reveal Legality
+              </Button>
 
               <Fade in={this.state.legalityTime !== ''}>
                 <h1>{`${this.state.legalityTime} ${
