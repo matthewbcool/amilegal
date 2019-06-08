@@ -1,0 +1,597 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`app matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="App"
+  >
+    <header
+      class="App-header"
+    >
+      <h1
+        class="main-title"
+      >
+        AmILegal
+      </h1>
+      <button
+        aria-label="go back"
+        class="MuiButtonBase-root-7 MuiIconButton-root-1 MuiIconButton-colorPrimary-3"
+        style="margin: 0px 0px 10px 0px;"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiIconButton-label-6"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root-10"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z"
+            />
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+          </svg>
+        </span>
+        <span
+          class="MuiTouchRipple-root-266"
+        />
+      </button>
+    </header>
+    <div
+      aria-valuenow="0"
+      class="MuiLinearProgress-root-19 MuiLinearProgress-colorPrimary-20 MuiLinearProgress-determinate-22"
+      role="progressbar"
+      style="height: 25px;"
+    >
+      <div
+        class="MuiLinearProgress-bar-29 MuiLinearProgress-barColorPrimary-30 MuiLinearProgress-bar1Determinate-33"
+        style="transform: scaleX(0);"
+      />
+    </div>
+    <div
+      class="MuiGrid-container-37 MuiGrid-direction-xs-column-40 MuiGrid-align-items-xs-center-45 MuiGrid-justify-xs-center-54"
+    >
+      <div
+        class="MuiGrid-item-38 MuiGrid-grid-xs-12-77"
+      >
+        <div
+          class="MuiPaper-root-135 MuiPaper-elevation8-145 MuiPaper-rounded-136 MuiCard-root-134 questions-card"
+        >
+          <div
+            class="MuiCardContent-root-162"
+          >
+            <h1
+              style="margin: 15px 0px 0px 0px;"
+            >
+              When was your sign-in?
+            </h1>
+            <div
+              class="dynamic-component-wrapper"
+            >
+              <form
+                autocomplete="off"
+                class="time-picker-form"
+              >
+                <div
+                  class="MuiFormControl-root-163"
+                >
+                  <label
+                    class="MuiFormLabel-root-178 MuiInputLabel-root-167 MuiInputLabel-formControl-172 MuiInputLabel-animated-175"
+                    data-shrink="false"
+                    for="hour"
+                    style="padding: 0px 0px 2px 0px; margin: 5px 0px 0px 0px;"
+                  >
+                    Hour
+                  </label>
+                  <div
+                    class="MuiInputBase-root-205 MuiInput-root-192 MuiInput-underline-196 MuiInputBase-formControl-206 MuiInput-formControl-193 time-picker-select"
+                    style="font-size: 2rem; padding: 0px 0px 5px 0px; width: 70px;"
+                  >
+                    <div
+                      class="MuiSelect-root-185"
+                    >
+                      <div
+                        aria-haspopup="true"
+                        aria-pressed="false"
+                        class="MuiSelect-select-186 MuiSelect-selectMenu-189 MuiInputBase-input-215 MuiInput-input-200"
+                        id="select-hour"
+                        role="button"
+                        tabindex="0"
+                      >
+                        <span>
+                          ​
+                        </span>
+                      </div>
+                      <input
+                        id="hour"
+                        name="hour"
+                        type="hidden"
+                        value=""
+                      />
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root-10 MuiSelect-icon-191"
+                        focusable="false"
+                        role="presentation"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M7 10l5 5 5-5z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <h1
+                  style="margin: 0px 10px 0px 10px;"
+                >
+                  :
+                </h1>
+                <div
+                  class="MuiFormControl-root-163"
+                >
+                  <label
+                    class="MuiFormLabel-root-178 MuiInputLabel-root-167 MuiInputLabel-formControl-172 MuiInputLabel-animated-175"
+                    data-shrink="false"
+                    for="minute"
+                    style="padding: 0px 0px 2px 0px; margin: 5px 0px 0px 0px;"
+                  >
+                    Minutes
+                  </label>
+                  <div
+                    class="MuiInputBase-root-205 MuiInput-root-192 MuiInput-underline-196 MuiInputBase-formControl-206 MuiInput-formControl-193 time-picker-select"
+                    style="font-size: 2rem; padding: 0px 0px 5px 0px; width: 70px;"
+                  >
+                    <div
+                      class="MuiSelect-root-185"
+                    >
+                      <div
+                        aria-haspopup="true"
+                        aria-pressed="false"
+                        class="MuiSelect-select-186 MuiSelect-selectMenu-189 MuiInputBase-input-215 MuiInput-input-200"
+                        id="select-minute"
+                        role="button"
+                        tabindex="0"
+                      >
+                        <span>
+                          ​
+                        </span>
+                      </div>
+                      <input
+                        id="minute"
+                        name="minute"
+                        type="hidden"
+                        value=""
+                      />
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root-10 MuiSelect-icon-191"
+                        focusable="false"
+                        role="presentation"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M7 10l5 5 5-5z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root-10 MuiSvgIcon-fontSizeLarge-18"
+                  focusable="false"
+                  role="presentation"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                  />
+                  <path
+                    d="M0 0h24v24H0z"
+                    fill="none"
+                  />
+                  <path
+                    d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"
+                  />
+                </svg>
+              </form>
+              <h5 />
+              <button
+                class="MuiButtonBase-root-7 MuiButton-root-226 MuiButton-contained-237 MuiButton-containedPrimary-238 MuiButton-raised-240 MuiButton-raisedPrimary-241 MuiButton-sizeLarge-250"
+                tabindex="0"
+                type="button"
+              >
+                <span
+                  class="MuiButton-label-227"
+                >
+                  Next
+                </span>
+                <span
+                  class="MuiTouchRipple-root-266"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="card-actions"
+          />
+        </div>
+      </div>
+      <div
+        class="MuiGrid-item-38 MuiGrid-grid-xs-12-77"
+      >
+        <div
+          class="MuiPaper-root-135 MuiPaper-elevation8-145 MuiPaper-rounded-136 MuiCard-root-134 results-card"
+        >
+          <div
+            class="display-wrap"
+          >
+            <p>
+              Sign In:
+            </p>
+             
+            <h5 />
+          </div>
+          <div
+            class="display-wrap"
+          >
+            <p>
+              Origin Station:
+            </p>
+             
+            <h5 />
+          </div>
+          <div
+            class="display-wrap"
+          >
+            <p>
+              Next Flying Time:
+            </p>
+             
+            <h5 />
+          </div>
+          <div
+            class="display-wrap"
+          >
+            <p>
+              Int:
+            </p>
+             
+            <h5 />
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer
+      class="footer"
+    >
+      <p>
+        1.0.3 
+      </p>
+      © 2019 Cool Dev Labs
+      <div>
+        <button
+          class="MuiButtonBase-root-7 MuiButton-root-226 MuiButton-outlined-234 MuiButton-outlinedPrimary-235"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label-227"
+          >
+            Info
+          </span>
+          <span
+            class="MuiTouchRipple-root-266"
+          />
+        </button>
+      </div>
+    </footer>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="App"
+  >
+    <header
+      class="App-header"
+    >
+      <h1
+        class="main-title"
+      >
+        AmILegal
+      </h1>
+      <button
+        aria-label="go back"
+        class="MuiButtonBase-root-7 MuiIconButton-root-1 MuiIconButton-colorPrimary-3"
+        style="margin: 0px 0px 10px 0px;"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiIconButton-label-6"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root-10"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z"
+            />
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+          </svg>
+        </span>
+        <span
+          class="MuiTouchRipple-root-266"
+        />
+      </button>
+    </header>
+    <div
+      aria-valuenow="0"
+      class="MuiLinearProgress-root-19 MuiLinearProgress-colorPrimary-20 MuiLinearProgress-determinate-22"
+      role="progressbar"
+      style="height: 25px;"
+    >
+      <div
+        class="MuiLinearProgress-bar-29 MuiLinearProgress-barColorPrimary-30 MuiLinearProgress-bar1Determinate-33"
+        style="transform: scaleX(0);"
+      />
+    </div>
+    <div
+      class="MuiGrid-container-37 MuiGrid-direction-xs-column-40 MuiGrid-align-items-xs-center-45 MuiGrid-justify-xs-center-54"
+    >
+      <div
+        class="MuiGrid-item-38 MuiGrid-grid-xs-12-77"
+      >
+        <div
+          class="MuiPaper-root-135 MuiPaper-elevation8-145 MuiPaper-rounded-136 MuiCard-root-134 questions-card"
+        >
+          <div
+            class="MuiCardContent-root-162"
+          >
+            <h1
+              style="margin: 15px 0px 0px 0px;"
+            >
+              When was your sign-in?
+            </h1>
+            <div
+              class="dynamic-component-wrapper"
+            >
+              <form
+                autocomplete="off"
+                class="time-picker-form"
+              >
+                <div
+                  class="MuiFormControl-root-163"
+                >
+                  <label
+                    class="MuiFormLabel-root-178 MuiInputLabel-root-167 MuiInputLabel-formControl-172 MuiInputLabel-animated-175"
+                    data-shrink="false"
+                    for="hour"
+                    style="padding: 0px 0px 2px 0px; margin: 5px 0px 0px 0px;"
+                  >
+                    Hour
+                  </label>
+                  <div
+                    class="MuiInputBase-root-205 MuiInput-root-192 MuiInput-underline-196 MuiInputBase-formControl-206 MuiInput-formControl-193 time-picker-select"
+                    style="font-size: 2rem; padding: 0px 0px 5px 0px; width: 70px;"
+                  >
+                    <div
+                      class="MuiSelect-root-185"
+                    >
+                      <div
+                        aria-haspopup="true"
+                        aria-pressed="false"
+                        class="MuiSelect-select-186 MuiSelect-selectMenu-189 MuiInputBase-input-215 MuiInput-input-200"
+                        id="select-hour"
+                        role="button"
+                        tabindex="0"
+                      >
+                        <span>
+                          ​
+                        </span>
+                      </div>
+                      <input
+                        id="hour"
+                        name="hour"
+                        type="hidden"
+                        value=""
+                      />
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root-10 MuiSelect-icon-191"
+                        focusable="false"
+                        role="presentation"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M7 10l5 5 5-5z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <h1
+                  style="margin: 0px 10px 0px 10px;"
+                >
+                  :
+                </h1>
+                <div
+                  class="MuiFormControl-root-163"
+                >
+                  <label
+                    class="MuiFormLabel-root-178 MuiInputLabel-root-167 MuiInputLabel-formControl-172 MuiInputLabel-animated-175"
+                    data-shrink="false"
+                    for="minute"
+                    style="padding: 0px 0px 2px 0px; margin: 5px 0px 0px 0px;"
+                  >
+                    Minutes
+                  </label>
+                  <div
+                    class="MuiInputBase-root-205 MuiInput-root-192 MuiInput-underline-196 MuiInputBase-formControl-206 MuiInput-formControl-193 time-picker-select"
+                    style="font-size: 2rem; padding: 0px 0px 5px 0px; width: 70px;"
+                  >
+                    <div
+                      class="MuiSelect-root-185"
+                    >
+                      <div
+                        aria-haspopup="true"
+                        aria-pressed="false"
+                        class="MuiSelect-select-186 MuiSelect-selectMenu-189 MuiInputBase-input-215 MuiInput-input-200"
+                        id="select-minute"
+                        role="button"
+                        tabindex="0"
+                      >
+                        <span>
+                          ​
+                        </span>
+                      </div>
+                      <input
+                        id="minute"
+                        name="minute"
+                        type="hidden"
+                        value=""
+                      />
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root-10 MuiSelect-icon-191"
+                        focusable="false"
+                        role="presentation"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M7 10l5 5 5-5z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root-10 MuiSvgIcon-fontSizeLarge-18"
+                  focusable="false"
+                  role="presentation"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                  />
+                  <path
+                    d="M0 0h24v24H0z"
+                    fill="none"
+                  />
+                  <path
+                    d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"
+                  />
+                </svg>
+              </form>
+              <h5 />
+              <button
+                class="MuiButtonBase-root-7 MuiButton-root-226 MuiButton-contained-237 MuiButton-containedPrimary-238 MuiButton-raised-240 MuiButton-raisedPrimary-241 MuiButton-sizeLarge-250"
+                tabindex="0"
+                type="button"
+              >
+                <span
+                  class="MuiButton-label-227"
+                >
+                  Next
+                </span>
+                <span
+                  class="MuiTouchRipple-root-266"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="card-actions"
+          />
+        </div>
+      </div>
+      <div
+        class="MuiGrid-item-38 MuiGrid-grid-xs-12-77"
+      >
+        <div
+          class="MuiPaper-root-135 MuiPaper-elevation8-145 MuiPaper-rounded-136 MuiCard-root-134 results-card"
+        >
+          <div
+            class="display-wrap"
+          >
+            <p>
+              Sign In:
+            </p>
+             
+            <h5 />
+          </div>
+          <div
+            class="display-wrap"
+          >
+            <p>
+              Origin Station:
+            </p>
+             
+            <h5 />
+          </div>
+          <div
+            class="display-wrap"
+          >
+            <p>
+              Next Flying Time:
+            </p>
+             
+            <h5 />
+          </div>
+          <div
+            class="display-wrap"
+          >
+            <p>
+              Int:
+            </p>
+             
+            <h5 />
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer
+      class="footer"
+    >
+      <p>
+        1.0.3 
+      </p>
+      © 2019 Cool Dev Labs
+      <div>
+        <button
+          class="MuiButtonBase-root-7 MuiButton-root-226 MuiButton-outlined-234 MuiButton-outlinedPrimary-235"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label-227"
+          >
+            Info
+          </span>
+          <span
+            class="MuiTouchRipple-root-266"
+          />
+        </button>
+      </div>
+    </footer>
+  </div>
+</DocumentFragment>
+`;
