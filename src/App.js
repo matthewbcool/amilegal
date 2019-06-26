@@ -56,7 +56,7 @@ export default class App extends Component {
         this.setState({ errorMsg: 'Please enter a valid time' })
       } else {
         stepForward()
-        const signIn = parseInt(this.state.hour)
+        const signIn = this.state.dayJsSignIn['$H']
         setDutyMax(signIn)
         setDisplaySignIn()
         clearErrorMsg()
@@ -120,7 +120,10 @@ export default class App extends Component {
     }
     const calulateLegality = () => {
       const signInObj = this.state.dayJsSignIn
-      let signInPlusDuty = signInObj.add(this.state.onDutyMax, 'hour')
+      let signInPlusDuty = this.state.dayJsSignIn.add(
+        this.state.onDutyMax,
+        'hour'
+      )
       if (this.state.internationalDebrief === true) {
         signInPlusDuty = signInPlusDuty.subtract(30, 'minute')
       } else {
@@ -460,7 +463,7 @@ export default class App extends Component {
           </Grid>
         </Grid>
         <footer className='footer'>
-          <p>2.1.0 </p>© 2019 Cool Dev Labs
+          <p>2.1.1 </p>© 2019 Cool Dev Labs
           <InfoDialog />
         </footer>
       </div>
