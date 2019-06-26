@@ -1,17 +1,19 @@
 import React, { Component } from 'react'
-import Button from '@material-ui/core/Button'
-import Card from '@material-ui/core/Card'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import Grid from '@material-ui/core/Grid'
-import LinearProgress from '@material-ui/core/LinearProgress'
-import Fade from '@material-ui/core/Fade'
-import CardContent from '@material-ui/core/CardContent'
-import IconButton from '@material-ui/core/IconButton'
+import {
+  Button,
+  Card,
+  CssBaseline,
+  Grid,
+  LinearProgress,
+  Fade,
+  CardContent,
+  IconButton,
+  TextField,
+  Select,
+  MenuItem
+} from '@material-ui/core/'
 import ArrowBackIos from '@material-ui/icons/ArrowBackIos'
-import TextField from '@material-ui/core/TextField'
-import Select from '@material-ui/core/Select'
-import MenuItem from '@material-ui/core/MenuItem'
-import TimePicker from './TimePicker'
+import TimePick from './TimePick'
 import dayjs from 'dayjs'
 import InfoDialog from './InfoDialog'
 import './App.css'
@@ -23,7 +25,7 @@ export default class App extends Component {
     slectedTime: 1200,
     hour: '',
     minute: '',
-    dayJsSignIn: {},
+    dayJsSignIn: '',
     stationOrigin: '',
     intTripType: '',
     tripTypeDescription: '',
@@ -51,7 +53,7 @@ export default class App extends Component {
     }
 
     const getSignIn = () => {
-      if (this.state.hour === '' || this.state.minute === '') {
+      if (this.state.dayJsSignIn === '') {
         this.setState({ errorMsg: 'Please enter a valid time' })
       } else {
         stepForward()
@@ -62,13 +64,12 @@ export default class App extends Component {
       }
     }
 
+    const setDayJsSignIn = selectedTime => {
+      this.setState({ dayJsSignIn: selectedTime })
+    }
+
     const setDisplaySignIn = () => {
-      // also saves the dayJS object to state
-      const signInTime = dayjs()
-        .hour(this.state.hour)
-        .minute(this.state.minute)
-      this.setState({ dayJsSignIn: signInTime })
-      const displaySignIn = signInTime.format('HHmm')
+      let displaySignIn = this.state.dayJsSignIn.format('HHmm')
       this.setState({ displaySignIn: displaySignIn })
     }
 
@@ -150,7 +151,7 @@ export default class App extends Component {
       } else if (this.state.intTripType === 'EXTEND_LONG_RANGE') {
         this.setState({ onDutyMax: 19 })
       } else {
-        console.log('nothihng set')
+        console.log('nothing set')
       }
     }
 
@@ -191,11 +192,7 @@ export default class App extends Component {
         question: 'When was your sign-in?',
         component: (
           <div className='dynamic-component-wrapper'>
-            <TimePicker
-              handleChange={handleChange}
-              hour={this.state.hour}
-              minute={this.state.minute}
-            />
+            <TimePick setSignIn={setDayJsSignIn} />
             <h5>{this.state.errorMsg}</h5>
             <Button
               variant='contained'
