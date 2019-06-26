@@ -6,7 +6,6 @@ function TimePick(props) {
   const [selectedTime, changeSelectedTime] = useState()
 
   const handleTimeChange = selectedTime => {
-    console.log(props.setSignIn(selectedTime))
     changeSelectedTime(selectedTime)
   }
   return (
