@@ -117,10 +117,7 @@ export default class App extends Component {
     }
     const calulateLegality = () => {
       const signInObj = this.state.dayJsSignIn
-      let signInPlusDuty = this.state.dayJsSignIn.add(
-        this.state.onDutyMax,
-        'hour'
-      )
+      let signInPlusDuty = signInObj.add(this.state.onDutyMax, 'hour')
       if (this.state.internationalDebrief === true) {
         signInPlusDuty = signInPlusDuty.subtract(30, 'minute')
       } else {
@@ -134,7 +131,7 @@ export default class App extends Component {
     const setDutyMax = signIn => {
       if (signIn > 4 && signIn < 17) {
         this.setState({ onDutyMax: 15 })
-      } else if (signIn > 16 && signIn < 23) {
+      } else if (signIn > 15 && signIn < 21) {
         this.setState({ onDutyMax: 13 })
       } else if ((signIn => 23 && signIn < 26) || signIn < 5) {
         this.setState({ onDutyMax: 12 })
@@ -274,6 +271,7 @@ export default class App extends Component {
                   <FormHelperText value=''>
                     <em>Hours</em>
                   </FormHelperText>
+                  <option value=''>--</option>
                   {generateHourMenu()}
                 </NativeSelect>
                 <h5>Hours</h5>
@@ -293,6 +291,7 @@ export default class App extends Component {
                   <FormHelperText value=''>
                     <em>Minutes</em>
                   </FormHelperText>
+                  <option value=''>--</option>
                   {generateMinutesMenu()}
                 </NativeSelect>
                 <h5>Minutes</h5>
@@ -348,6 +347,7 @@ export default class App extends Component {
                 <FormHelperText value=''>
                   <em>Choose one for description</em>
                 </FormHelperText>
+                <option value=''>Select Int Trip Type</option>
                 <option value={'NON_LONG_RANGE'}>Non-Long Range</option>
                 <option value={'MID_RANGE'}>Mid-Range</option>
                 <option value={'LONG_RANGE'}>Long Range</option>
