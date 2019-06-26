@@ -21,9 +21,6 @@ export default class App extends Component {
   state = {
     progressValue: 0,
     activeStep: 0,
-    slectedTime: 1200,
-    hour: '',
-    minute: '',
     dayJsSignIn: '',
     stationOrigin: '',
     intTripType: '',
@@ -53,7 +50,7 @@ export default class App extends Component {
 
     const getSignIn = () => {
       if (this.state.dayJsSignIn === '') {
-        this.setState({ errorMsg: 'Please enter a valid time' })
+        this.setState({ errorMsg: 'Touch the time to enter your sign in time' })
       } else {
         stepForward()
         const signIn = this.state.dayJsSignIn['$H']
