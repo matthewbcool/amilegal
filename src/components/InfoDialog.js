@@ -14,17 +14,17 @@ function Transition(props) {
 function InfoDialog() {
   const [open, setOpen] = React.useState(false)
 
-  function handleClickOpen() {
+  const handleClickOpen = () => {
     setOpen(true)
   }
 
-  function handleClose() {
+  const handleClose = () => {
     setOpen(false)
   }
 
   return (
     <div>
-      <Button variant='outlined' color='primary' onClick={handleClickOpen}>
+      <Button variant='outlined' color='secondary' onClick={handleClickOpen}>
         Info
       </Button>
       <Dialog
