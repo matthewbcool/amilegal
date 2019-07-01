@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: aamilegal.com
+Token: d14fb64c86aaa0719786170716dce334d9ae86b86819c1101b582a52d0bad463
