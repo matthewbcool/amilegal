@@ -14,6 +14,7 @@ import {
 } from '@material-ui/core/'
 import ArrowBackIos from '@material-ui/icons/ArrowBackIos'
 import TimePick from './components/TimePick'
+import BraveAd from './components/BraveAd'
 import InfoDialog from './components/InfoDialog'
 import './App.css'
 
@@ -460,9 +461,10 @@ export default class App extends Component {
           </Grid>
         </Grid>
         <footer className='footer'>
-          <p>2.2.0 </p>© 2019 Cool Dev Labs
+          <p>2.3.0 </p>© 2019 Cool Dev Labs
           <InfoDialog />
         </footer>
+        <BraveAd />
       </div>
     )
   }
