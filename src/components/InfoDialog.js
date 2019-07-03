@@ -49,9 +49,11 @@ function InfoDialog() {
         </DialogTitle>
         <DialogContent>
           <DialogContentText id='alert-dialog-slide-description'>
-            Known Bugs: Be careful when calculating breaks near the cutoffs for
-            sign-ins Be aware of your homebase times when coming back from
-            trips. Will fix as soon as I can get to it.
+            Known Bugs: I'm adding an input to deal with time-zones: we need to
+            know the time zone difference of your home base to the current
+            location in some cases ie: early morning east coast sign-in
+            time/west coast home base. In these edge cases we do not get the
+            correct legality time. Fix coming soon!
             <br />
             OBLIGATORY DISCLAIMER: Use this tool to give you a good estimation
             but always confirm with crew tracking and double check.

@@ -461,7 +461,7 @@ export default class App extends Component {
           </Grid>
         </Grid>
         <footer className='footer'>
-          <p>2.3.0 </p>© 2019 Cool Dev Labs
+          <p>2.3.1 </p>© 2019 Cool Dev Labs
           <InfoDialog />
         </footer>
         <BraveAd />
