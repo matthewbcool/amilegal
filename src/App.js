@@ -85,9 +85,7 @@ export default class App extends Component {
       } else {
         stepForward()
         this.setState({
-          displayFlyingTime: `${this.state.flyingHours} hours ${
-            this.state.flyingMinutes
-          } minutes`
+          displayFlyingTime: `${this.state.flyingHours} hours ${this.state.flyingMinutes} minutes`
         })
         clearErrorMsg()
       }
@@ -389,9 +387,7 @@ export default class App extends Component {
               </Button>
 
               <Fade in={this.state.legalityTime !== ''}>
-                <h1>{`${this.state.legalityTime} ${
-                  this.state.stationOrigin
-                } time`}</h1>
+                <h1>{`${this.state.legalityTime} ${this.state.stationOrigin} time`}</h1>
               </Fade>
             </div>
           </div>
@@ -461,7 +457,7 @@ export default class App extends Component {
           </Grid>
         </Grid>
         <footer className='footer'>
-          <p>2.3.2 </p>© 2019 Cool Dev Labs
+          <p>2.3.4 </p>© 2019 Cool Dev Labs
           <InfoDialog />
         </footer>
         <BraveAd />
