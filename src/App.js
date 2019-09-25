@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useRef } from 'react'
 import {
   Button,
   Card,
@@ -14,7 +14,7 @@ import {
 } from '@material-ui/core/'
 import ArrowBackIos from '@material-ui/icons/ArrowBackIos'
 import TimePick from './components/TimePick'
-import BraveAd from './components/BraveAd'
+import DonationBox from './components/DonationBox'
 import InfoDialog from './components/InfoDialog'
 import './App.css'
 
@@ -36,8 +36,7 @@ export default class App extends Component {
     onDutyMax: 15,
     errorMsg: '',
     internationalDebrief: false,
-    legalityTime: '',
-    showDonateBox: false
+    legalityTime: ''
   }
 
   render() {
@@ -210,10 +209,6 @@ export default class App extends Component {
       })
     }
 
-    const showDonationBox = () => {
-      this.setState({ showDonateBox: !this.state.showDonateBox })
-    }
-
     const stepperData = [
       {
         question: 'When was your sign-in?',
@@ -304,6 +299,7 @@ export default class App extends Component {
             <h5>{this.state.errorMsg}</h5>
             <Button
               onClick={getFlyingTime}
+              href={'#donate-box'}
               variant='contained'
               color='primary'
               size='large'>
@@ -465,35 +461,7 @@ export default class App extends Component {
           <p>2.4 </p>© 2019 Cool Dev Labs
           <InfoDialog />
         </footer>
-        <Button
-          onClick={showDonationBox}
-          variant='contained'
-          size='large'
-          color='primary'>
-          Donate
-        </Button>
-        {this.state.showDonateBox ? (
-          <div style={{ padding: '5px' }}>
-            <p>
-              Help keep the project hosted and developed. Coders can donate code
-              here:
-              <a
-                style={{ color: 'blue', textDecoration: 'underline' }}
-                href='https://github.com/matthewbcool/amilegal'>
-                Github
-              </a>
-            </p>
-            <iframe
-              src='https://donorbox.org/embed/aamilegal-com?hide_donation_meter=true'
-              height='685px'
-              width='100%'
-              seamless='seamless'
-              name='donorbox'
-              frameborder='0'
-              scrolling='no'
-              allowpaymentrequest></iframe>{' '}
-          </div>
-        ) : null}
+        <DonationBox />
       </div>
     )
   }
