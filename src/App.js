@@ -36,7 +36,8 @@ export default class App extends Component {
     onDutyMax: 15,
     errorMsg: '',
     internationalDebrief: false,
-    legalityTime: ''
+    legalityTime: '',
+    showDonateBox: false
   }
 
   render() {
@@ -207,6 +208,10 @@ export default class App extends Component {
       return menuItems.map(item => {
         return item
       })
+    }
+
+    const showDonationBox = () => {
+      this.setState({ showDonateBox: !this.state.showDonateBox })
     }
 
     const stepperData = [
@@ -457,10 +462,38 @@ export default class App extends Component {
           </Grid>
         </Grid>
         <footer className='footer'>
-          <p>2.3.4 </p>© 2019 Cool Dev Labs
+          <p>2.4 </p>© 2019 Cool Dev Labs
           <InfoDialog />
         </footer>
-        <BraveAd />
+        <Button
+          onClick={showDonationBox}
+          variant='contained'
+          size='large'
+          color='primary'>
+          Donate
+        </Button>
+        {this.state.showDonateBox ? (
+          <div style={{ padding: '5px' }}>
+            <p>
+              Help keep the project hosted and developed. Coders can donate code
+              here:
+              <a
+                style={{ color: 'blue', textDecoration: 'underline' }}
+                href='https://github.com/matthewbcool/amilegal'>
+                Github
+              </a>
+            </p>
+            <iframe
+              src='https://donorbox.org/embed/aamilegal-com?hide_donation_meter=true'
+              height='685px'
+              width='100%'
+              seamless='seamless'
+              name='donorbox'
+              frameborder='0'
+              scrolling='no'
+              allowpaymentrequest></iframe>{' '}
+          </div>
+        ) : null}
       </div>
     )
   }
