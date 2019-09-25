@@ -458,7 +458,7 @@ export default class App extends Component {
           </Grid>
         </Grid>
         <footer className='footer'>
-          <p>2.4 </p>© 2019 Cool Dev Labs
+          <p>2.5 </p>© 2019 Cool Dev Labs
           <InfoDialog />
         </footer>
         <DonationBox />
