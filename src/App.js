@@ -460,7 +460,7 @@ export default class App extends Component {
           </Grid>
         </Grid>
         <footer className='footer'>
-          <p>2.6 ©2019 </p>
+          <p>2.7 ©2019 </p>
           <SponsorModal />
           <InfoDialog />
         </footer>

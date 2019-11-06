@@ -47,7 +47,7 @@ function SponsorModal() {
           </div>
           <h4>EP ($10)</h4>
           <div className='ep'> -----</div>
-          <h4>Platium ($5)</h4>
+          <h4>Platinum ($5)</h4>
           <div className='plat'>
             <p>Doreen Mei</p>
           </div>
