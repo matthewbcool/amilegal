@@ -16,6 +16,7 @@ import ArrowBackIos from '@material-ui/icons/ArrowBackIos'
 import TimePick from './components/TimePick'
 import DonationBox from './components/DonationBox'
 import InfoDialog from './components/InfoDialog'
+import SponsorModal from './components/SponsorModal'
 import './App.css'
 
 export default class App extends Component {
@@ -251,7 +252,7 @@ export default class App extends Component {
         )
       },
       {
-        question: 'Scheduled flying time of your last leg?',
+        question: 'Scheduled flying time of your last leg today?',
         component: (
           <div className='dynamic-component-wrapper'>
             <div className='flying-time-wrapper'>
@@ -301,6 +302,7 @@ export default class App extends Component {
               onClick={getFlyingTime}
               href={'#donate-box'}
               variant='contained'
+              style={{ width: '400px' }}
               color='primary'
               size='large'>
               Next
@@ -400,7 +402,7 @@ export default class App extends Component {
       <div className='App'>
         <CssBaseline />
         <header className='App-header'>
-          <h1 className='main-title'>AmILegal</h1>
+          <h1 className='main-title'>AAmILegal</h1>
           <IconButton
             style={{ margin: '0px 0px 10px 0px' }}
             onClick={() => {
@@ -432,7 +434,7 @@ export default class App extends Component {
           <Grid item xs={12}>
             <Card raised className='questions-card'>
               <CardContent>
-                <h1 style={{ margin: '15px 0px 0px 0px' }}>
+                <h1 style={{ margin: '15px 0px 0px 0px', padding: '0 5px' }}>
                   {stepperData[this.state.activeStep].question}
                 </h1>
                 {stepperData[this.state.activeStep].component}
@@ -458,7 +460,8 @@ export default class App extends Component {
           </Grid>
         </Grid>
         <footer className='footer'>
-          <p>2.5 </p>© 2019 Cool Dev Labs
+          <p>2.6 ©2019 </p>
+          <SponsorModal />
           <InfoDialog />
         </footer>
         <DonationBox />

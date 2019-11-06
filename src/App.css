@@ -115,3 +115,48 @@ a {
   align-items: center;
   padding: 2px 2px 2px 2px;
 }
+
+.donation-wrapper {
+  margin: auto;
+  width: 400px;
+}
+
+.donation-text {
+  font-family: 'ZCOOL XiaoWei', serif;
+  font-size: 1.5rem;
+  margin: 0 -80px;
+  padding: 10px;
+}
+
+.ck {
+  font-size: 1.3rem;
+  background: -webkit-linear-gradient(#eee, grey);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0.5px grey;
+}
+.ep {
+  font-size: 1.2rem;
+  background: -webkit-linear-gradient(#eee, Yellow);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0.5px yellow;
+}
+.plat {
+  font-size: 1.1rem;
+  color: SlateGray;
+}
+.goldies {
+  font-size: 1rem;
+  color: Gold;
+}
+
+@media (max-width: 560px) {
+  .donation-text {
+    font-size: 1.2rem;
+    margin: 0;
+    padding: 20px;
+  }
+}

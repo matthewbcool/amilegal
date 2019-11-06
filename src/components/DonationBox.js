@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { Button } from '@material-ui/core/'
+import '../App.css'
 const DonationBox = () => {
   const [isDonationBoxShowing, setDonationBox] = useState(false)
 
@@ -11,16 +12,25 @@ const DonationBox = () => {
     }, 1000)
   }
   return (
-    <div>
+    <div style={{ paddingTop: '5px' }}>
       {isDonationBoxShowing ? (
-        <div ref={donationBox} style={{ padding: '5px' }}>
-          <p>
-            Help keep the project hosted and developed. Coders can donate code
-            here:
+        <div className='donation-wrapper' ref={donationBox}>
+          <p className='donation-text'>
+            Your donations help keep this website hosted and developed
+            <span> 🎉🥰👨‍💻</span>. Fill in your name if you would like to be
+            featured on the sponsor wall! If you want to support free tools made
+            for us flight attendants donate here or sponsor the code at the
+            link:
             <a
-              style={{ color: 'blue', textDecoration: 'underline' }}
-              href='https://github.com/matthewbcool/amilegal'>
-              Github
+              style={{
+                color: 'blue',
+                textDecoration: 'underline',
+                margin: 'auto'
+              }}
+              href='https://github.com/matthewbcool/amilegal'
+              target='_blank'
+              rel='noopener noreferrer'>
+              AAmILegal Github Repo
             </a>
           </p>
           <iframe
