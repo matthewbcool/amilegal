@@ -40,13 +40,13 @@ function SponsorModal() {
         onClose={handleClose}
         aria-labelledby='supporters-dialog-slide-title'
         aria-describedby='alert-dialog-slide-description'>
-        <DialogContent>
+        <DialogContent className='sponsor-modal-wrapper'>
           <h4>Concierge Key (over $10)</h4>
           <div>
             <p className='ck'>Kelly Cool-Lesko & Brad Lesko </p>
           </div>
           <h4>EP ($10)</h4>
-          <div className='ep'> -----</div>
+          <div className='ep'> </div>
           <h4>Platinum ($5)</h4>
           <div className='plat'>
             <p>Doreen Mei</p>
@@ -54,6 +54,7 @@ function SponsorModal() {
 
           <h4>Gold ($1)</h4>
           <div className='goldies'>
+            <p>Brent Beacham</p>
             <p>Tim Cool</p>
             <p>Pat Cool</p>
           </div>

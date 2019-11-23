@@ -128,6 +128,16 @@ a {
   padding: 10px;
 }
 
+.sponsor-modal-wrapper {
+  background-color: rgb(68, 68, 66);
+  text-align: center;
+}
+
+/* these are the titles in the sponsor modal */
+h4 {
+  color: white;
+}
+
 .ck {
   font-size: 1.3rem;
   background: -webkit-linear-gradient(#eee, grey);
@@ -146,11 +156,12 @@ a {
 }
 .plat {
   font-size: 1.1rem;
-  color: SlateGray;
+  color: rgb(183, 250, 255);
 }
 .goldies {
   font-size: 1rem;
-  color: Gold;
+  line-height: 70%;
+  color: rgb(242, 207, 9);
 }
 
 @media (max-width: 560px) {

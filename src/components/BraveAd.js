@@ -16,8 +16,9 @@ export default function BraveAd() {
             display='block'
             color='inherit'
             style={{ paddingBottom: '5px', margin: '0 2em' }}>
-            Download Brave to surf the web with built in ad block, protect your
-            privacy, and support this site:
+            If you would rather not donate cash, you can download and use Brave
+            to surf the web without ads and protect your privacy by blocking
+            trackers! Try it out!
           </Typography>
           <img alt='download brave banner ad' src={banner} />
         </a>
