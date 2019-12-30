@@ -16,11 +16,17 @@ export default function BraveAd() {
             display='block'
             color='inherit'
             style={{ paddingBottom: '5px', margin: '0 2em' }}>
-            If you would rather not donate cash, you can download and use Brave
-            to surf the web without ads and protect your privacy by blocking
-            trackers! Try it out!
+            Support AAmilegal for free by downloading and using Brave.
           </Typography>
           <img alt='download brave banner ad' src={banner} />
+          <Typography
+            align='center'
+            variant='caption'
+            display='block'
+            color='inherit'
+            style={{ paddingBottom: '5px', margin: '0 2em' }}>
+            Brave is a web browser that blocks ads and privacy trackers and pays you for your attention. Watch youtube ad free, search the web freely without your data being used.
+          </Typography>
         </a>
       </Paper>
     </div>

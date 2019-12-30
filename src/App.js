@@ -379,7 +379,7 @@ export default class App extends Component {
         )
       },
       {
-        question: 'Ready to depart with door closed ',
+        question: 'Close aircraft door at... ',
         component: (
           <div className='dynamic-component-wrapper'>
             <div>
@@ -461,7 +461,7 @@ export default class App extends Component {
           </Grid>
         </Grid>
         <footer className='footer'>
-          <p>2.8 ©2019 </p>
+          <p>2.9 ©2019 </p>
           <SponsorModal />
           <InfoDialog />
         </footer>
