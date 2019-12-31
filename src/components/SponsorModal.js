@@ -46,7 +46,8 @@ function SponsorModal() {
             <p className='ck'>Kelly Cool-Lesko & Brad Lesko </p>
           </div>
           <h4>EP ($10)</h4>
-          <div className='ep'> </div>
+
+          <div className='ep'> Cherie Lambourne (Save a SeaBass)</div>
           <h4>Platinum ($5)</h4>
           <div className='plat'>
             <p>Doreen Mei</p>
