@@ -1,4 +1,4 @@
-import React, { Component, useRef } from 'react'
+import React, { Component } from 'react'
 import {
   Button,
   Card,
@@ -461,12 +461,10 @@ export default class App extends Component {
           </Grid>
         </Grid>
         <footer className='footer'>
-          <p>2.9 ©2019 </p>
+          <p>2.91 ©2020 </p>
           <SponsorModal />
           <InfoDialog />
         </footer>
-        <DonationBox />
-
         <BraveAd />
       </div>
     )
