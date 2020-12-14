@@ -14,7 +14,6 @@ import {
 } from '@material-ui/core/'
 import ArrowBackIos from '@material-ui/icons/ArrowBackIos'
 import TimePick from './components/TimePick'
-import DonationBox from './components/DonationBox'
 import InfoDialog from './components/InfoDialog'
 import SponsorModal from './components/SponsorModal'
 import './App.css'
@@ -461,7 +460,7 @@ export default class App extends Component {
           </Grid>
         </Grid>
         <footer className='footer'>
-          <p>2.91 ©2020 </p>
+          <p>3.0 ©{new Date().getFullYear()} </p>
           <SponsorModal />
           <InfoDialog />
         </footer>
