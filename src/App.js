@@ -17,7 +17,7 @@ import TimePick from './components/TimePick'
 import InfoDialog from './components/InfoDialog'
 import SponsorModal from './components/SponsorModal'
 import './App.css'
-import BraveAd from './components/BraveAd'
+
 
 export default class App extends Component {
   state = {
@@ -464,7 +464,6 @@ export default class App extends Component {
           <SponsorModal />
           <InfoDialog />
         </footer>
-        <BraveAd />
       </div>
     )
   }
